@@ -72,4 +72,115 @@ button {
 	max-width: 1000px;
 	margin: 0 auto;
 	padding: 0 1.6rem;
+	text-align: center;
+}
+
+.content {
+	overflow: hidden;
+	align-items: center;
+	background-image: radial-gradient(
+		circle,
+		#009cf5,
+		#0080ea,
+		#2162da,
+		#443fc4,
+		#5b00a6
+	);
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	width: 100vw;
+}
+
+.box {
+	justify-content: center;
+	margin: 0px;
+}
+
+.boxContent {
+	background: #535353;
+	border-radius: 10px;
+	text-align: center;
+	padding: 45px 90px;
+}
+
+.username,
+.pass {
+	background: #464545;
+	border: none;
+	border-radius: 3px;
+	color: white;
+	margin: 5px;
+	font-size: 16px;
+	padding-left: 5px;
+	height: 2.8rem;
+	width: 200px;
+}
+
+input[type='text'],
+input[type='password'] {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	outline: none;
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+}
+
+input[type='text']:focus,
+input[type='password']:focus {
+	box-shadow: 0 0 5px #0080ea;
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid #0080ea;
+}
+
+::placeholder {
+	color: white;
+	opacity: 0.5;
+}
+
+:-ms-input-placeholder {
+	color: white;
+}
+
+::-ms-input-placeholder {
+	color: white;
+}
+
+.button {
+	background: #5b00a6;
+	border: none;
+	border-radius: 5px;
+	color: rgb(245, 245, 245);
+	cursor: pointer;
+	font-size: 16px;
+	margin: 5px;
+	padding: 5px 0;
+	width: 100px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+	transform: scale(1.1);
+}
+
+a {
+	color: #009cf5;
+	text-decoration: none;
+}
+.sign {
+	font-size: 15px;
+	margin-top: 5px;
+	text-align: left;
+}
+
+.lost {
+	font-size: 15px;
+	margin-top: 5px;
+	text-align: right;
 }
