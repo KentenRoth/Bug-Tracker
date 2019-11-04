@@ -130,9 +130,7 @@ input[type='password'] {
 
 input[type='text']:focus,
 input[type='password']:focus {
-	box-shadow: 0 0 5px #0080ea;
-	padding: 3px 0px 3px 3px;
-	margin: 5px 1px 3px 0px;
+	box-shadow: 0 0 10px #0080ea;
 	border: 1px solid #0080ea;
 }
 
