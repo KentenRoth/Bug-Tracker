@@ -76,7 +76,6 @@ button {
 }
 
 .content {
-	overflow: hidden;
 	align-items: center;
 	background-image: radial-gradient(
 		circle,
@@ -89,6 +88,7 @@ button {
 	display: flex;
 	height: 100vh;
 	justify-content: center;
+	overflow: hidden;
 	width: 100vw;
 }
 
@@ -102,6 +102,10 @@ button {
 	border-radius: 10px;
 	text-align: center;
 	padding: 45px 90px;
+}
+
+.formInput {
+	margin: 5px;
 }
 
 .username,
@@ -123,6 +127,7 @@ input[type='password'] {
 	-moz-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
 	outline: none;
 	padding: 3px 0px 3px 3px;
 	margin: 5px 1px 3px 0px;
@@ -161,6 +166,7 @@ input[type='password']:focus {
 	-moz-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
 }
 
 .button:hover {

@@ -1,0 +1,177 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background: #464545;
+	color: #e1e1e1;
+	font-family: 'EB Garamond', serif;
+	font-size: 1.8rem;
+}
+
+button {
+	cursor: pointer;
+}
+
+.row {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.row::after {
+	display: block;
+	clear: both;
+	content: '';
+}
+
+.col-1 {
+	width: 8.33%;
+}
+.col-2 {
+	width: 16.66%;
+}
+.col-3 {
+	width: 25%;
+}
+.col-4 {
+	width: 33.33%;
+}
+.col-5 {
+	width: 41.66%;
+}
+.col-6 {
+	width: 50%;
+}
+.col-7 {
+	width: 58.33%;
+}
+.col-8 {
+	width: 66.66%;
+}
+.col-9 {
+	width: 75%;
+}
+.col-10 {
+	width: 83.33%;
+}
+.col-11 {
+	width: 91.66%;
+}
+.col-12 {
+	width: 100%;
+}
+
+.container {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 1.6rem;
+	text-align: center;
+}
+
+.content {
+	align-items: center;
+	background-image: radial-gradient(
+		circle,
+		#009cf5,
+		#0080ea,
+		#2162da,
+		#443fc4,
+		#5b00a6
+	);
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	overflow: hidden;
+	width: 100vw;
+}
+
+.box {
+	justify-content: center;
+	margin: 0px;
+}
+
+.boxContent {
+	background: #535353;
+	border-radius: 10px;
+	text-align: center;
+	padding: 45px 90px;
+}
+
+.formInput {
+	margin: 5px;
+}
+
+.name,
+.email,
+.username,
+.pass1,
+.pass2 {
+	background: #464545;
+	border: none;
+	border-radius: 3px;
+	color: white;
+	margin: 30px;
+	font-size: 16px;
+	padding-left: 5px;
+	height: 2.8rem;
+	width: 200px;
+}
+
+input[type='text'],
+input[type='password'] {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	outline: none;
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+}
+
+input[type='text']:focus,
+input[type='password']:focus {
+	box-shadow: 0 0 10px #0080ea;
+	border: 1px solid #0080ea;
+}
+
+::placeholder {
+	color: white;
+	opacity: 0.5;
+}
+
+:-ms-input-placeholder {
+	color: white;
+}
+
+::-ms-input-placeholder {
+	color: white;
+}
+
+.button {
+	background: #5b00a6;
+	border: none;
+	border-radius: 5px;
+	color: rgb(245, 245, 245);
+	cursor: pointer;
+	font-size: 16px;
+	margin: 10px;
+	padding: 5px 0;
+	width: 100px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+	transform: scale(1.1);
+}
