@@ -108,8 +108,12 @@ button {
 	margin: 5px;
 }
 
+.name,
+.email,
 .username,
-.pass {
+.pass,
+.pass1,
+.pass2 {
 	background: #464545;
 	border: none;
 	border-radius: 3px;
@@ -150,6 +154,16 @@ input[type='password']:focus {
 
 ::-ms-input-placeholder {
 	color: white;
+}
+
+.usernameInput,
+.passInput {
+	display: none;
+}
+
+.active {
+	display: block;
+	text-align: left;
 }
 
 .button {
