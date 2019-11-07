@@ -16,23 +16,29 @@
 					<div class="boxContent">
 						<div class="form">
 							<div class="formInput">
-								<p class="usernameInput">
+								<p id="usernameInput" class="usernameInput">
 									Username
 								</p>
 								<input
+									id="username"
 									class="username"
 									type="text"
 									placeholder="Username"
+									onfocus="isActive()"
+									onblur="notActive()"
 								/>
 							</div>
 							<div class="formInput">
-								<p class="passInput">
+								<p id="passInput" class="passInput">
 									Password
 								</p>
 								<input
+									id="pass"
 									class="pass"
 									type="password"
 									placeholder="Password"
+									onfocus="isActive()"
+									onblur="notActive()"
 								/>
 							</div>
 
