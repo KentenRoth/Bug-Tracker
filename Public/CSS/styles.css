@@ -74,9 +74,8 @@ button {
 	padding: 0 1.6rem;
 	text-align: center;
 }
-
-.content {
-	align-items: center;
+.background {
+	background-attachment: fixed;
 	background-image: radial-gradient(
 		circle,
 		#009cf5,
@@ -85,11 +84,18 @@ button {
 		#443fc4,
 		#5b00a6
 	);
+
+	background-repeat: no-repeat;
+	height: 100%;
+}
+
+.content {
+	align-items: center;
+
 	display: flex;
-	height: 100vh;
+
 	justify-content: center;
 	overflow: hidden;
-	width: 100vw;
 }
 
 .box {
@@ -102,6 +108,26 @@ button {
 	border-radius: 10px;
 	text-align: center;
 	padding: 45px 90px;
+}
+
+.card {
+	background: #535353;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 25px 50px;
+	text-align: center;
+}
+
+.high {
+	border: 6px rgb(255, 30, 30) solid;
+}
+
+.medium {
+	border: 4px rgb(255, 255, 47) solid;
+}
+
+.low {
+	border: 2px rgb(0, 255, 0) solid;
 }
 
 .title {
