@@ -6,13 +6,108 @@
 		<title></title>
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/Public/Login Portal/styles.css" />
 		<link rel="stylesheet" href="profile.css" />
 	</head>
 	<body>
 		<div class="content">
 			<div class="container">
 				<div class="box">
-					<div class="boxContent"></div>
+					<div class="boxContent">
+						<div class="title">
+							<h3>Edit User</h3>
+						</div>
+						<div class="form">
+							<div class="formInput">
+								<p id="nameInput" class="nameInput">
+									Name
+								</p>
+								<input
+									id="name"
+									class="name"
+									type="text"
+									placeholder="Name"
+									onfocus="isActive()"
+									onblur="notActive()"
+								/>
+							</div>
+							<div class="formInput">
+								<p id="emailInput" class="emailInput">
+									Email Address
+								</p>
+								<input
+									id="email"
+									class="email"
+									placeholder="Email"
+									type="text"
+									onfocus="isActive()"
+									onblur="notActive()"
+								/>
+							</div>
+							<div class="formInput">
+								<p id="usernameInput" class="usernameInput">
+									Username
+								</p>
+								<input
+									id="username"
+									class="username"
+									placeholder="Username"
+									type="text"
+									onfocus="isActive()"
+									onblur="notActive()"
+								/>
+							</div>
+							<div class="formInput">
+								<p id="pass1Input" class="pass1Input">
+									New Password
+								</p>
+								<input
+									id="pass1"
+									class="pass1"
+									placeholder="New Password"
+									type="password"
+									onfocus="isActive()"
+									onblur="notActive()"
+								/>
+							</div>
+							<div class="formInput">
+								<p id="pass2Input" class="pass2Input">
+									Re-Enter New Password
+								</p>
+								<input
+									id="pass2"
+									class="pass2"
+									placeholder="Re-Enter New Password"
+									type="password"
+									onfocus="isActive()"
+									onblur="notActive()"
+								/>
+							</div>
+							<div class="formInput">
+								<p
+									id="currentPassInput"
+									class="currentPassInput"
+								>
+									Current Password
+								</p>
+								<input
+									id="currentPass"
+									class="currentPass"
+									placeholder="Current Password"
+									type="password"
+									onfocus="isActive()"
+									onblur="notActive()"
+								/>
+							</div>
+							<div class="submitButton">
+								<input class="button" type="submit" />
+							</div>
+
+							<div class="home">
+								<a href=""><p>Don't save changes</p></a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
