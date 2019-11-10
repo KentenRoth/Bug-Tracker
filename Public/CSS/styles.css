@@ -104,6 +104,10 @@ button {
 	padding: 45px 90px;
 }
 
+.title {
+	color: #009cf5;
+}
+
 .formInput {
 	margin: 5px;
 }
@@ -114,7 +118,9 @@ button {
 .pass,
 .pass1,
 .pass2,
-.currentPass {
+.currentPass,
+.subject,
+.description {
 	background: #464545;
 	border: none;
 	border-radius: 3px;
@@ -126,8 +132,13 @@ button {
 	width: 200px;
 }
 
+textarea {
+	max-width: 200px;
+}
+
 input[type='text'],
-input[type='password'] {
+input[type='password'],
+textarea {
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
@@ -139,7 +150,8 @@ input[type='password'] {
 }
 
 input[type='text']:focus,
-input[type='password']:focus {
+input[type='password']:focus,
+textarea:focus {
 	box-shadow: 0 0 10px #0080ea;
 	border: 1px solid #0080ea;
 }
@@ -163,7 +175,9 @@ input[type='password']:focus {
 .emailInput,
 .pass1Input,
 .pass2Input,
-.currentPassInput {
+.currentPassInput,
+.subjectInput,
+.descriptionInput {
 	height: 0px;
 	opacity: 0;
 	padding-bottom: 10px;
@@ -201,8 +215,16 @@ input[type='password']:focus {
 	transition: all 0.3s ease-in-out;
 }
 
+.home {
+	padding-top: 10px;
+}
+
 .button:hover {
 	transform: scale(1.1);
+}
+
+.submitButton {
+	padding-top: 10px;
 }
 
 a {
@@ -219,4 +241,8 @@ a {
 	font-size: 15px;
 	margin-top: 5px;
 	text-align: right;
+}
+
+.description {
+	height: 100px;
 }
