@@ -33,6 +33,16 @@ app.post('/Tickets', (req, res) => {
 		});
 });
 
+app.get('/Tickets', (req, res) => {
+	Ticket.find({})
+		.then(tickets => {
+			res.send(tickets);
+		})
+		.catch(error => {
+			console.log(error);
+		});
+});
+
 app.listen(port, () => {
 	console.log(`Server up on ${port}`);
 });
