@@ -34,42 +34,38 @@ app.get('/users/:id', async (req, res) => {
 	}
 });
 
-app.post('/tickets', (req, res) => {
+app.post('/tickets', async (req, res) => {
 	const ticket = new Ticket(req.body);
 
-	ticket
-		.save()
-		.then(() => {
-			res.send(ticket);
-		})
-		.catch(error => {
-			res.status(400).send(error);
-		});
+	try {
+		await ticket.save();
+		res.send(ticket);
+	} catch (error) {
+		res.status(400).send(error);
+	}
 });
 
-app.get('/tickets', (req, res) => {
-	Ticket.find({})
-		.then(tickets => {
-			res.send(tickets);
-		})
-		.catch(error => {
-			res.status(500).send(error);
-		});
+app.get('/tickets', async (req, res) => {
+	try {
+		const tickets = await Ticket.find({});
+		res.send(tickets);
+	} catch (error) {
+		res.status(500).send(error);
+	}
 });
 
-app.get('/tickets/:id', (req, res) => {
+app.get('/tickets/:id', async (req, res) => {
 	const _id = req.params.id;
 
-	Ticket.findById(_id)
-		.then(ticket => {
-			if (!ticket) {
-				return res.status(404).send();
-			}
-			res.send(ticket);
-		})
-		.catch(error => {
-			res.status(500).send();
-		});
+	try {
+		const ticket = await Ticket.findById(_id);
+		if (!ticket) {
+			return res.status(404).send();
+		}
+		res.send(ticket);
+	} catch (error) {
+		res.status(500).send();
+	}
 });
 
 app.listen(port, () => {
