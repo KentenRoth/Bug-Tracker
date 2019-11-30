@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const TicketSchema = new Schema({
 	created: {
-		type: Date,
-		default: Date().now,
+		type: Number,
+		default: Date.now,
 		trim: true
 	},
 	summary: {
