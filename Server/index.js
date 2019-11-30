@@ -34,6 +34,34 @@ app.get('/users/:id', async (req, res) => {
 	}
 });
 
+app.patch('/users/:id', async (req, res) => {
+	const updates = Object.keys(req.body);
+	const allowedUpdates = ['name', 'email', 'password'];
+	const isValidUpdate = updates.every(update =>
+		allowedUpdates.includes(update)
+	);
+	const _id = req.params.id;
+
+	if (!isValidUpdate) {
+		return res.status(400).send({ error: 'Update not taken.' });
+	}
+
+	try {
+		const user = await User.findByIdAndUpdate(_id, req.body, {
+			new: true,
+			runValidators: true
+		});
+
+		if (!user) {
+			return res.status(404).send();
+		}
+
+		res.send(user);
+	} catch (error) {
+		res.status(400).send();
+	}
+});
+
 app.post('/tickets', async (req, res) => {
 	const ticket = new Ticket(req.body);
 
@@ -61,6 +89,32 @@ app.get('/tickets/:id', async (req, res) => {
 		const ticket = await Ticket.findById(_id);
 		if (!ticket) {
 			return res.status(404).send();
+		}
+		res.send(ticket);
+	} catch (error) {
+		res.status(500).send();
+	}
+});
+
+app.patch('/tickets/:id', async (req, res) => {
+	const updates = Object.keys(req.body);
+	const allowedUpdates = ['completed', 'priority', 'summary', 'description'];
+	const isValidUpdate = updates.every(update =>
+		allowedUpdates.includes(update)
+	);
+	const _id = req.params.id;
+
+	if (!isValidUpdate) {
+		return res.status(400).send({ error: 'Update not accepted.' });
+	}
+
+	try {
+		const ticket = await Ticket.findByIdAndUpdate(_id, req.body, {
+			new: true,
+			runValidators: true
+		});
+		if (!ticket) {
+			res.status(404).send();
 		}
 		res.send(ticket);
 	} catch (error) {
