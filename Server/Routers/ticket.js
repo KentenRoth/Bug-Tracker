@@ -42,17 +42,17 @@ router.patch('/tickets/:id', async (req, res) => {
 	const isValidUpdate = updates.every(update =>
 		allowedUpdates.includes(update)
 	);
-	const _id = req.params.id;
 
 	if (!isValidUpdate) {
 		return res.status(400).send({ error: 'Update not accepted.' });
 	}
 
 	try {
-		const ticket = await Ticket.findByIdAndUpdate(_id, req.body, {
-			new: true,
-			runValidators: true
-		});
+		const ticket = await Ticket.findById(id);
+		updates.forEach(update => (ticket[update] = req.body[update]));
+
+		await ticket.save();
+
 		if (!ticket) {
 			res.status(404).send();
 		}
