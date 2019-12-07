@@ -43,17 +43,16 @@ router.patch('/users/:id', async (req, res) => {
 	const isValidUpdate = updates.every(update =>
 		allowedUpdates.includes(update)
 	);
-	const _id = req.params.id;
 
 	if (!isValidUpdate) {
 		return res.status(400).send({ error: 'Update not taken.' });
 	}
 
 	try {
-		const user = await User.findByIdAndUpdate(_id, req.body, {
-			new: true,
-			runValidators: true
-		});
+		const user = await User.findById(req.params.id);
+		updates.forEach(update => (user[update] = req.body[update]));
+
+		await user.save();
 
 		if (!user) {
 			return res.status(404).send();
