@@ -26,6 +26,11 @@ const TicketSchema = new Schema({
 	priority: {
 		type: String,
 		required: true
+	},
+	project: {
+		type: String,
+		required: true,
+		trim: true
 	}
 });
 
