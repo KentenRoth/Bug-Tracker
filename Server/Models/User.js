@@ -12,6 +12,7 @@ const UserSchema = new Schema({
 	},
 	email: {
 		type: String,
+		unique: true,
 		rquired: true,
 		trim: true,
 		validate(value) {
@@ -35,6 +36,22 @@ const UserSchema = new Schema({
 		required: false
 	}
 });
+
+UserSchema.statics.findByCredentials = async (email, password) => {
+	const user = await User.findOne({ email });
+
+	if (!user) {
+		throw new Error('Please check login information');
+	}
+
+	const isMatch = await bcrypt.compare(password, user.password);
+
+	if (!isMatch) {
+		throw new Error('Please check login information');
+	}
+
+	return user;
+};
 
 UserSchema.pre('save', async function(next) {
 	const user = this;
