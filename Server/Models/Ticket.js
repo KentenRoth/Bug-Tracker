@@ -31,7 +31,12 @@ const TicketSchema = new Schema({
 		type: String,
 		required: true,
 		trim: true
+	},
+	owner: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: true,
+		ref: 'User'
 	}
 });
 
-module.exports = Ticket = mongoose.model('ticket', TicketSchema);
+module.exports = Ticket = mongoose.model('Ticket', TicketSchema);

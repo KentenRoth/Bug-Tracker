@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const Ticket = require('./Ticket');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -44,6 +45,12 @@ const UserSchema = new Schema({
 			}
 		}
 	]
+});
+
+UserSchema.virtual('tickets', {
+	ref: 'Ticket',
+	localField: '_id',
+	foreignField: 'owner'
 });
 
 UserSchema.methods.createAuthToken = async function() {
@@ -92,4 +99,12 @@ UserSchema.pre('save', async function(next) {
 	next();
 });
 
-module.exports = User = mongoose.model('user', UserSchema);
+UserSchema.pre('remove', async function(next) {
+	const user = this;
+
+	await Ticket.deleteMany({ owner: user._id });
+
+	next();
+});
+
+module.exports = User = mongoose.model('User', UserSchema);

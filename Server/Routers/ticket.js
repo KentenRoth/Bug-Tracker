@@ -1,9 +1,13 @@
 const express = require('express');
 const router = new express.Router();
+const auth = require('../Middleware/auth');
 const Ticket = require('../Models/Ticket');
 
-router.post('/tickets', async (req, res) => {
-	const ticket = new Ticket(req.body);
+router.post('/tickets', auth, async (req, res) => {
+	const ticket = new Ticket({
+		...req.body,
+		owner: req.user._id
+	});
 
 	try {
 		await ticket.save();
@@ -13,20 +17,21 @@ router.post('/tickets', async (req, res) => {
 	}
 });
 
-router.get('/tickets', async (req, res) => {
+router.get('/tickets', auth, async (req, res) => {
 	try {
-		const tickets = await Ticket.find({});
-		res.send(tickets);
+		await req.user.populate('tickets').execPopulate();
+		res.send(req.user.tickets);
 	} catch (error) {
 		res.status(500).send(error);
 	}
 });
 
-router.get('/tickets/:id', async (req, res) => {
-	const _id = req.params.id;
-
+router.get('/tickets/:id', auth, async (req, res) => {
 	try {
-		const ticket = await Ticket.findById(_id);
+		const ticket = await Ticket.findOne({
+			_id: req.params.id,
+			owner: req.user._id
+		});
 		if (!ticket) {
 			return res.status(404).send();
 		}
@@ -36,7 +41,7 @@ router.get('/tickets/:id', async (req, res) => {
 	}
 });
 
-router.patch('/tickets/:id', async (req, res) => {
+router.patch('/tickets/:id', auth, async (req, res) => {
 	const updates = Object.keys(req.body);
 	const allowedUpdates = ['completed', 'priority', 'summary', 'description'];
 	const isValidUpdate = updates.every(update =>
@@ -48,25 +53,30 @@ router.patch('/tickets/:id', async (req, res) => {
 	}
 
 	try {
-		const ticket = await Ticket.findById(id);
-		updates.forEach(update => (ticket[update] = req.body[update]));
-
-		await ticket.save();
+		const ticket = await Ticket.findOne({
+			_id: req.params.id,
+			owner: req.user._id
+		});
 
 		if (!ticket) {
 			res.status(404).send();
 		}
+
+		updates.forEach(update => (ticket[update] = req.body[update]));
+		await ticket.save();
+
 		res.send(ticket);
 	} catch (error) {
 		res.status(500).send();
 	}
 });
 
-router.delete('/tickets/:id', async (req, res) => {
-	const _id = req.params.id;
-
+router.delete('/tickets/:id', auth, async (req, res) => {
 	try {
-		const ticket = await Ticket.findByIdAndDelete(_id);
+		const ticket = await Ticket.findOneAndDelete({
+			_id: req.params.id,
+			owner: req.user._id
+		});
 		if (!ticket) {
 			return res.status(404).send();
 		}
