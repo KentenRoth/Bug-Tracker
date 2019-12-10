@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/KentenRoth/Bug-Tracker/issues"
   },
-  "homepage": "https://github.com/KentenRoth/Bug-Tracker#readme"
+  "homepage": "https://github.com/KentenRoth/Bug-Tracker#readme",
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
 }
