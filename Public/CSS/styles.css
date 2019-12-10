@@ -85,7 +85,7 @@ button {
 		#443fc4,
 		#5b00a6
 	);
-
+	overflow: scroll;
 	background-repeat: no-repeat;
 	height: 100%;
 }
