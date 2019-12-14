@@ -88,6 +88,8 @@ button {
 	overflow: scroll;
 	background-repeat: no-repeat;
 	height: 100vh;
+	padding-bottom: 75px;
+	padding-top: 20px;
 }
 
 .mainContent {
