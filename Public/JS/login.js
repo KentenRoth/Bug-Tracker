@@ -7,7 +7,11 @@ function login() {
 			password: pass
 		})
 		.then(function(response) {
+			localStorage.setItem('authToken', response.data.authToken);
 			console.log(response);
+			if (response.status === 200) {
+				window.location = '/Public/main.html';
+			}
 		})
 		.catch(function(error) {
 			console.log(error);
