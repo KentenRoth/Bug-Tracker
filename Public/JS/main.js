@@ -1,6 +1,6 @@
 const bug = document.getElementById('bugs');
 
-highPriority = () => {
+highPriority = summaryContent => {
 	const box = document.createElement('div');
 	box.setAttribute('class', 'box');
 	const card = document.createElement('div');
@@ -30,7 +30,7 @@ highPriority = () => {
 	summaryTop.textContent = 'Summary:';
 	const summary = document.createElement('div');
 	summary.setAttribute('class', 'summary');
-	summary.textContent = 'This is short summary';
+	summary.textContent = summaryContent;
 
 	row.appendChild(summaryCol);
 	summaryCol.appendChild(summaryTop);
@@ -57,7 +57,7 @@ highPriority = () => {
 	card.appendChild(row);
 };
 
-mediumPriority = () => {
+mediumPriority = summaryContent => {
 	const box = document.createElement('div');
 	box.setAttribute('class', 'box');
 	const card = document.createElement('div');
@@ -87,7 +87,7 @@ mediumPriority = () => {
 	summaryTop.textContent = 'Summary:';
 	const summary = document.createElement('div');
 	summary.setAttribute('class', 'summary');
-	summary.textContent = 'This is short summary';
+	summary.textContent = summaryContent;
 
 	row.appendChild(summaryCol);
 	summaryCol.appendChild(summaryTop);
@@ -114,7 +114,7 @@ mediumPriority = () => {
 	card.appendChild(row);
 };
 
-lowPriority = () => {
+lowPriority = summaryContent => {
 	const box = document.createElement('div');
 	box.setAttribute('class', 'box');
 	const card = document.createElement('div');
@@ -144,7 +144,7 @@ lowPriority = () => {
 	summaryTop.textContent = 'Summary:';
 	const summary = document.createElement('div');
 	summary.setAttribute('class', 'summary');
-	summary.textContent = 'This is short summary';
+	summary.textContent = summaryContent;
 
 	row.appendChild(summaryCol);
 	summaryCol.appendChild(summaryTop);
@@ -184,13 +184,13 @@ getTickets = () => {
 		const tickets = response.data;
 		tickets.map(ticket => {
 			if (ticket.priority === 'high') {
-				highPriority();
+				highPriority(ticket.summary);
 			}
 			if (ticket.priority === 'medium') {
-				mediumPriority();
+				mediumPriority(ticket.summary);
 			}
 			if (ticket.priority === 'low') {
-				lowPriority();
+				lowPriority(ticket.summary);
 			}
 		});
 	});
