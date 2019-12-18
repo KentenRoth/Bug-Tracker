@@ -180,9 +180,20 @@ const config = {
 };
 
 getTickets = () => {
-	axios
-		.get('http://localhost:3000/tickets', config)
-		.then(response => console.log(response));
+	axios.get('http://localhost:3000/tickets', config).then(response => {
+		const tickets = response.data;
+		tickets.map(ticket => {
+			if (ticket.priority === 'high') {
+				highPriority();
+			}
+			if (ticket.priority === 'medium') {
+				mediumPriority();
+			}
+			if (ticket.priority === 'low') {
+				lowPriority();
+			}
+		});
+	});
 };
 
 getTickets();
