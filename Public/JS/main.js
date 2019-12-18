@@ -171,12 +171,18 @@ lowPriority = () => {
 	card.appendChild(row);
 };
 
-highPriority();
-mediumPriority();
-lowPriority();
-highPriority();
-mediumPriority();
-mediumPriority();
-lowPriority();
-lowPriority();
-highPriority();
+const token = localStorage.getItem('authToken');
+
+const config = {
+	headers: {
+		Authorization: 'Bearer ' + token
+	}
+};
+
+getTickets = () => {
+	axios
+		.get('http://localhost:3000/tickets', config)
+		.then(response => console.log(response));
+};
+
+getTickets();
