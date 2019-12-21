@@ -140,10 +140,15 @@ button {
 }
 
 .medium {
-	border: 4px rgb(255, 255, 47) solid;
+	border: 4px rgb(255, 155, 55) solid;
 }
 
 .low {
+	border: 4px rgb(255, 255, 45) solid;
+}
+
+.completed {
+	opacity: 50%;
 	border: 2px rgb(0, 255, 0) solid;
 }
 

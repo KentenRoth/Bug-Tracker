@@ -1,42 +1,31 @@
 const bug = document.getElementById('bugs');
 
-highPriority = summaryContent => {
+highPriority = (summaryContent, ticketID, taskCompleted) => {
 	const box = document.createElement('div');
 	box.setAttribute('class', 'box');
 	const card = document.createElement('div');
 	card.setAttribute('class', 'card high');
+	card.setAttribute('id', ticketID);
+
 	const row = document.createElement('div');
 	row.setAttribute('class', 'row');
 
 	// Col 1
-	const date = document.createElement('div');
-	date.setAttribute('class', 'date');
-	date.textContent = '11/10/2019';
-	const dateCol = document.createElement('div');
-	dateCol.setAttribute('class', 'col-4');
-	const dateTop = document.createElement('div');
-	dateTop.setAttribute('class', 'top');
-	dateTop.textContent = 'Created On:';
-
-	row.appendChild(dateCol);
-	dateCol.appendChild(dateTop);
-	dateTop.appendChild(date);
-
-	// Col 2
 	const summaryCol = document.createElement('div');
-	summaryCol.setAttribute('class', 'summary col-4');
-	const summaryTop = document.createElement('div');
-	summaryTop.setAttribute('class', 'top');
-	summaryTop.textContent = 'Summary:';
-	const summary = document.createElement('div');
-	summary.setAttribute('class', 'summary');
-	summary.textContent = summaryContent;
+	summaryCol.setAttribute('class', 'col-8');
+	const summaryTitle = document.createElement('div');
+	summaryTitle.setAttribute('class', 'summary');
+	summaryTitle.textContent = 'Summary:';
+	const summaryMain = document.createElement('div');
+	summaryMain.setAttribute('class', 'summary');
+	summaryMain.textContent = summaryContent;
 
 	row.appendChild(summaryCol);
-	summaryCol.appendChild(summaryTop);
-	summaryTop.appendChild(summary);
+	summaryCol.appendChild(summaryTitle);
+	summaryTitle.appendChild(summaryMain);
 
-	// Col 3
+	// Col 2
+
 	const completeCol = document.createElement('div');
 	completeCol.setAttribute('class', 'complete col-4');
 	const completeTop = document.createElement('div');
@@ -45,7 +34,12 @@ highPriority = summaryContent => {
 	const completeCheck = document.createElement('div');
 	const complete = document.createElement('input');
 	complete.setAttribute('class', 'complete');
+	complete.setAttribute('id', 'checkbox');
 	complete.setAttribute('type', 'checkbox');
+	complete.setAttribute('onClick', "checkboxClicked('" + ticketID + "')");
+	if (taskCompleted === true) {
+		complete.setAttribute('checked', 'true');
+	}
 
 	row.appendChild(completeCol);
 	completeCol.appendChild(completeTop);
@@ -66,34 +60,21 @@ mediumPriority = summaryContent => {
 	row.setAttribute('class', 'row');
 
 	// Col 1
-	const date = document.createElement('div');
-	date.setAttribute('class', 'date');
-	date.textContent = '11/10/2019';
-	const dateCol = document.createElement('div');
-	dateCol.setAttribute('class', 'col-4');
-	const dateTop = document.createElement('div');
-	dateTop.setAttribute('class', 'top');
-	dateTop.textContent = 'Created On:';
-
-	row.appendChild(dateCol);
-	dateCol.appendChild(dateTop);
-	dateTop.appendChild(date);
-
-	// Col 2
 	const summaryCol = document.createElement('div');
-	summaryCol.setAttribute('class', 'summary col-4');
-	const summaryTop = document.createElement('div');
-	summaryTop.setAttribute('class', 'top');
-	summaryTop.textContent = 'Summary:';
-	const summary = document.createElement('div');
-	summary.setAttribute('class', 'summary');
-	summary.textContent = summaryContent;
+	summaryCol.setAttribute('class', 'col-8');
+	const summaryTitle = document.createElement('div');
+	summaryTitle.setAttribute('class', 'summary');
+	summaryTitle.textContent = 'Summary:';
+	const summaryMain = document.createElement('div');
+	summaryMain.setAttribute('class', 'summary');
+	summaryMain.textContent = summaryContent;
 
 	row.appendChild(summaryCol);
-	summaryCol.appendChild(summaryTop);
-	summaryTop.appendChild(summary);
+	summaryCol.appendChild(summaryTitle);
+	summaryTitle.appendChild(summaryMain);
 
-	// Col 3
+	// Col 2
+
 	const completeCol = document.createElement('div');
 	completeCol.setAttribute('class', 'complete col-4');
 	const completeTop = document.createElement('div');
@@ -123,34 +104,21 @@ lowPriority = summaryContent => {
 	row.setAttribute('class', 'row');
 
 	// Col 1
-	const date = document.createElement('div');
-	date.setAttribute('class', 'date');
-	date.textContent = '11/10/2019';
-	const dateCol = document.createElement('div');
-	dateCol.setAttribute('class', 'col-4');
-	const dateTop = document.createElement('div');
-	dateTop.setAttribute('class', 'top');
-	dateTop.textContent = 'Created On:';
-
-	row.appendChild(dateCol);
-	dateCol.appendChild(dateTop);
-	dateTop.appendChild(date);
-
-	// Col 2
 	const summaryCol = document.createElement('div');
-	summaryCol.setAttribute('class', 'summary col-4');
-	const summaryTop = document.createElement('div');
-	summaryTop.setAttribute('class', 'top');
-	summaryTop.textContent = 'Summary:';
-	const summary = document.createElement('div');
-	summary.setAttribute('class', 'summary');
-	summary.textContent = summaryContent;
+	summaryCol.setAttribute('class', 'col-8');
+	const summaryTitle = document.createElement('div');
+	summaryTitle.setAttribute('class', 'summary');
+	summaryTitle.textContent = 'Summary:';
+	const summaryMain = document.createElement('div');
+	summaryMain.setAttribute('class', 'summary');
+	summaryMain.textContent = summaryContent;
 
 	row.appendChild(summaryCol);
-	summaryCol.appendChild(summaryTop);
-	summaryTop.appendChild(summary);
+	summaryCol.appendChild(summaryTitle);
+	summaryTitle.appendChild(summaryMain);
 
-	// Col 3
+	// Col 2
+
 	const completeCol = document.createElement('div');
 	completeCol.setAttribute('class', 'complete col-4');
 	const completeTop = document.createElement('div');
@@ -179,18 +147,74 @@ const config = {
 	}
 };
 
+checkboxClicked = ticketID => {
+	const checkbox = document.getElementById('checkbox').checked;
+	if (checkbox === true) {
+		completedTicket(ticketID);
+	} else {
+		unCompletedTicket(ticketID);
+	}
+};
+
+updateTaskDisplay = (id, priority, completed) => {
+	const ticket = document.getElementById(id);
+	if (completed === false) {
+		ticket.setAttribute('class', `card ${priority}`);
+	} else {
+		ticket.setAttribute('class', 'card completed');
+	}
+};
+
+completedTicket = id => {
+	axios
+		.patch(
+			`http://localhost:3000/tickets/${id}`,
+			{
+				completed: true
+			},
+			config
+		)
+		.then(response => {
+			if (response.status === 200) {
+				const priority = response.data.priority;
+				const completed = response.data.completed;
+				updateTaskDisplay(id, priority, completed);
+			}
+		})
+		.catch(error => console.log(error));
+};
+
+unCompletedTicket = id => {
+	axios
+		.patch(
+			`http://localhost:3000/tickets/${id}`,
+			{
+				completed: false
+			},
+			config
+		)
+		.then(response => {
+			if (response.status === 200) {
+				const priority = response.data.priority;
+				const completed = response.data.completed;
+				updateTaskDisplay(id, priority, completed);
+			}
+		})
+		.catch(error => console.log(error));
+};
+
 getTickets = () => {
 	axios.get('http://localhost:3000/tickets', config).then(response => {
 		const tickets = response.data;
 		tickets.map(ticket => {
 			if (ticket.priority === 'high') {
-				highPriority(ticket.summary);
+				highPriority(ticket.summary, ticket._id, ticket.completed);
 			}
 			if (ticket.priority === 'medium') {
-				mediumPriority(ticket.summary);
+				mediumPriority(ticket.summary, ticket._id, ticket.completed);
 			}
 			if (ticket.priority === 'low') {
-				lowPriority(ticket.summary);
+				lowPriority(ticket.summary, ticket._id, ticket.completed);
 			}
 		});
 	});
