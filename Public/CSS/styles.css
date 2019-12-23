@@ -280,8 +280,13 @@ textarea:focus {
 	transition: all 0.3s ease-in-out;
 }
 
+.logout {
+	background: rgb(161, 20, 20);
+	margin-top: 15px;
+}
+
 .home {
-	padding-top: 10px;
+	padding: 15px 0px;
 }
 
 .button:hover {
@@ -296,6 +301,16 @@ a {
 	color: #009cf5;
 	text-decoration: none;
 }
+
+.logoutAll a {
+	color: rgb(255, 0, 0);
+}
+
+.delete a {
+	color: rgb(220, 0, 0);
+	font-weight: bold;
+}
+
 .sign {
 	font-size: 15px;
 	margin-top: 5px;
