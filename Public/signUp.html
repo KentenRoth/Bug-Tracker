@@ -13,7 +13,10 @@
 			<div class="container">
 				<div class="box">
 					<div class="boxContent">
-						<div class="form">
+						<form
+							class="form"
+							onsubmit="createAccount(); return false"
+						>
 							<div class="formInput">
 								<p id="nameInput" class="nameInput">
 									Name
@@ -40,19 +43,7 @@
 									onblur="notActive()"
 								/>
 							</div>
-							<div class="formInput">
-								<p id="usernameInput" class="usernameInput">
-									Username
-								</p>
-								<input
-									id="username"
-									class="username"
-									placeholder="Username"
-									type="text"
-									onfocus="isActive()"
-									onblur="notActive()"
-								/>
-							</div>
+
 							<div class="formInput">
 								<p id="pass1Input" class="pass1Input">
 									Password
@@ -82,11 +73,13 @@
 							<div class="submitButton">
 								<input class="button" type="submit" />
 							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src="./JS/styles.js" async defer></script>
+		<script src="./JS/signUp.js" async defer></script>
 	</body>
 </html>
