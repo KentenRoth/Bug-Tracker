@@ -181,7 +181,10 @@ completedTicket = id => {
 				updateTaskDisplay(id, priority, completed);
 			}
 		})
-		.catch(error => console.log(error));
+		.catch(error => {
+			document.getElementById('checkbox').checked = true;
+			console.log(error);
+		});
 };
 
 unCompletedTicket = id => {
@@ -200,7 +203,10 @@ unCompletedTicket = id => {
 				updateTaskDisplay(id, priority, completed);
 			}
 		})
-		.catch(error => console.log(error));
+		.catch(error => {
+			document.getElementById('checkbox').checked = true;
+			console.log(error);
+		});
 };
 
 getTickets = () => {
