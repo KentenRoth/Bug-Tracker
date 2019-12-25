@@ -5,7 +5,7 @@ highPriority = (summaryContent, ticketID, taskCompleted) => {
 	box.setAttribute('class', 'box');
 	const card = document.createElement('div');
 	card.setAttribute('class', 'card high');
-	card.setAttribute('id', ticketID);
+	card.setAttribute('id', `ticket${ticketID}`);
 
 	const row = document.createElement('div');
 	row.setAttribute('class', 'row');
@@ -36,6 +36,7 @@ highPriority = (summaryContent, ticketID, taskCompleted) => {
 	complete.setAttribute('class', 'complete');
 	complete.setAttribute('id', 'checkbox');
 	complete.setAttribute('type', 'checkbox');
+	complete.setAttribute('id', `${ticketID}`);
 	complete.setAttribute('onClick', "checkboxClicked('" + ticketID + "')");
 	if (taskCompleted === true) {
 		complete.setAttribute('checked', 'true');
@@ -51,11 +52,13 @@ highPriority = (summaryContent, ticketID, taskCompleted) => {
 	card.appendChild(row);
 };
 
-mediumPriority = summaryContent => {
+mediumPriority = (summaryContent, ticketID, taskCompleted) => {
 	const box = document.createElement('div');
 	box.setAttribute('class', 'box');
 	const card = document.createElement('div');
 	card.setAttribute('class', 'card medium');
+	card.setAttribute('id', `ticket${ticketID}`);
+
 	const row = document.createElement('div');
 	row.setAttribute('class', 'row');
 
@@ -84,6 +87,11 @@ mediumPriority = summaryContent => {
 	const complete = document.createElement('input');
 	complete.setAttribute('class', 'complete');
 	complete.setAttribute('type', 'checkbox');
+	complete.setAttribute('id', `${ticketID}`);
+	complete.setAttribute('onClick', "checkboxClicked('" + ticketID + "')");
+	if (taskCompleted === true) {
+		complete.setAttribute('checked', 'true');
+	}
 
 	row.appendChild(completeCol);
 	completeCol.appendChild(completeTop);
@@ -95,11 +103,13 @@ mediumPriority = summaryContent => {
 	card.appendChild(row);
 };
 
-lowPriority = summaryContent => {
+lowPriority = (summaryContent, ticketID, taskCompleted) => {
 	const box = document.createElement('div');
 	box.setAttribute('class', 'box');
 	const card = document.createElement('div');
 	card.setAttribute('class', 'card low');
+	card.setAttribute('id', `ticket${ticketID}`);
+
 	const row = document.createElement('div');
 	row.setAttribute('class', 'row');
 
@@ -128,6 +138,11 @@ lowPriority = summaryContent => {
 	const complete = document.createElement('input');
 	complete.setAttribute('class', 'complete');
 	complete.setAttribute('type', 'checkbox');
+	complete.setAttribute('id', `${ticketID}`);
+	complete.setAttribute('onClick', "checkboxClicked('" + ticketID + "')");
+	if (taskCompleted === true) {
+		complete.setAttribute('checked', 'true');
+	}
 
 	row.appendChild(completeCol);
 	completeCol.appendChild(completeTop);
@@ -148,7 +163,7 @@ const config = {
 };
 
 checkboxClicked = ticketID => {
-	const checkbox = document.getElementById('checkbox').checked;
+	const checkbox = document.getElementById(`${ticketID}`).checked;
 	if (checkbox === true) {
 		completedTicket(ticketID);
 	} else {
@@ -157,7 +172,7 @@ checkboxClicked = ticketID => {
 };
 
 updateTaskDisplay = (id, priority, completed) => {
-	const ticket = document.getElementById(id);
+	const ticket = document.getElementById('ticket' + id);
 	if (completed === false) {
 		ticket.setAttribute('class', `card ${priority}`);
 	} else {
