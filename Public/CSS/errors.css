@@ -1,0 +1,26 @@
+.errorBox {
+	font-size: 15px;
+	color: red;
+	max-width: 200px;
+}
+
+.errorBox p {
+	padding-top: 5px;
+}
+
+.noError {
+	display: none;
+}
+
+.errors {
+	display: none;
+}
+
+.fail {
+	color: red;
+}
+
+.failInput {
+	border: 1px red solid;
+	background: #533b3b;
+}

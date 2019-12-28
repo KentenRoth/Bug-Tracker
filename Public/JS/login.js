@@ -1,5 +1,5 @@
 const failedLogin = () => {
-	const errorMessage = document.getElementById('errorMessage');
+	const errorMessage = document.getElementById('errors');
 	errorMessage.setAttribute('class', 'fail');
 
 	const emailError = document.getElementById('email');

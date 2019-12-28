@@ -7,6 +7,7 @@
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="./CSS/styles.css" />
+		<link rel="stylesheet" href="./CSS/errors.css" />
 	</head>
 	<body>
 		<div class="content">
@@ -15,7 +16,34 @@
 					<div class="boxContent">
 						<div class="title">
 							<h3>Create</h3>
+							<div class="errorBox">
+								<p
+									id="projectError"
+									class="projectError noError"
+								>
+									Project: 1-50 characters
+								</p>
+								<p
+									id="summaryError"
+									class="summaryError noError"
+								>
+									Summary: 1-100 characters
+								</p>
+								<p
+									id="priorityError"
+									class="priorityError noError"
+								>
+									Priority: High, Medium, Low
+								</p>
+								<p
+									id="descriptionError"
+									class="descriptionError noError"
+								>
+									Description: 1-500 characters is the limit
+								</p>
+							</div>
 						</div>
+						<div class="errors"></div>
 						<form onsubmit="saveTicket(); return false">
 							<div class="formInput">
 								<p id="projectInput" class="projectInput">
