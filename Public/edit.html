@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html class="no-js">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title></title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="./CSS/styles.css" />
+	</head>
+	<body>
+		<div class="content">
+			<div class="container">
+				<div class="box">
+					<div class="boxContent">
+						<div class="title">
+							<h3>Edit</h3>
+						</div>
+						<form onsubmit="saveTicket(); return false">
+							<div class="formInput">
+								<p id="projectInput" class="projectInput">
+									Project Name
+								</p>
+								<input
+									id="project"
+									class="project"
+									placeholder="Project Name"
+									type="text"
+									onfocus="isActive()"
+									onblur="notActive()"
+								/>
+							</div>
+							<div class="formInput">
+								<p id="subjectInput" class="subjectInput">
+									Summary
+								</p>
+								<input
+									id="subject"
+									class="subject"
+									placeholder="Summary"
+									type="text"
+									onfocus="isActive()"
+									onblur="notActive()"
+								/>
+							</div>
+							<div class="formInput">
+								<p id="priorityInput" class="priorityInput">
+									Priority Level
+								</p>
+								<input
+									id="priority"
+									class="priority"
+									placeholder="High, Medium, Low"
+									type="text"
+									onfocus="isActive()"
+									onblur="notActive()"
+								/>
+							</div>
+							<div class="formInput">
+								<p
+									id="descriptionInput"
+									class="descriptionInput"
+								>
+									Description
+								</p>
+								<textarea
+									class="description"
+									id="description"
+									placeholder="Description"
+									onfocus="isActive()"
+									onblur="notActive()"
+								></textarea>
+							</div>
+							<div class="submitButton">
+								<input
+									class="button"
+									type="submit"
+									value="Save"
+								/>
+							</div>
+						</form>
+						<div class="completedButton">
+							<button class="button complete">Completed</button>
+						</div>
+						<div>
+							<button class="button delete">Delete</button>
+						</div>
+
+						<div class="home">
+							<a href="/Public/main.html"><p>Don't Save</p></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="./JS/styles.js" async defer></script>
+		<script src="./JS/create.js" async defer></script>
+	</body>
+</html>
