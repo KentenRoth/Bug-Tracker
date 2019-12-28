@@ -17,6 +17,36 @@
 	font-weight: 900;
 }
 
+.top {
+	padding-bottom: 5px;
+}
+
 .user {
 	color: #009cf5;
+}
+
+.card {
+	cursor: pointer;
+}
+
+.complete {
+	cursor: pointer;
+}
+
+.checkboxHouse {
+	display: flex;
+	padding-top: 3px;
+	text-align: center;
+	justify-content: center;
+}
+
+input[type='checkbox'] {
+	-webkit-appearance: none;
+	width: 15px;
+	height: 15px;
+	background: #383838;
+	border-radius: 2px;
+}
+input[type='checkbox']:checked {
+	background: #009cf5;
 }

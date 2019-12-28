@@ -6,6 +6,7 @@ highPriority = (summaryContent, ticketID, taskCompleted) => {
 	const card = document.createElement('div');
 	card.setAttribute('class', 'card high');
 	card.setAttribute('id', `ticket${ticketID}`);
+	card.setAttribute('onClick', "selectedTicket('" + ticketID + "')");
 
 	const row = document.createElement('div');
 	row.setAttribute('class', 'row');
@@ -32,6 +33,7 @@ highPriority = (summaryContent, ticketID, taskCompleted) => {
 	completeTop.setAttribute('class', 'top');
 	completeTop.textContent = 'Complete';
 	const completeCheck = document.createElement('div');
+	completeCheck.setAttribute('class', 'checkboxHouse');
 	const complete = document.createElement('input');
 	complete.setAttribute('class', 'complete');
 	complete.setAttribute('id', 'checkbox');
@@ -84,6 +86,7 @@ mediumPriority = (summaryContent, ticketID, taskCompleted) => {
 	completeTop.setAttribute('class', 'top');
 	completeTop.textContent = 'Complete';
 	const completeCheck = document.createElement('div');
+	completeCheck.setAttribute('class', 'checkboxHouse');
 	const complete = document.createElement('input');
 	complete.setAttribute('class', 'complete');
 	complete.setAttribute('type', 'checkbox');
@@ -135,6 +138,7 @@ lowPriority = (summaryContent, ticketID, taskCompleted) => {
 	completeTop.setAttribute('class', 'top');
 	completeTop.textContent = 'Complete';
 	const completeCheck = document.createElement('div');
+	completeCheck.setAttribute('class', 'checkboxHouse');
 	const complete = document.createElement('input');
 	complete.setAttribute('class', 'complete');
 	complete.setAttribute('type', 'checkbox');
@@ -239,6 +243,17 @@ getTickets = () => {
 			}
 		});
 	});
+};
+
+selectedTicket = ticketID => {
+	axios
+		.get(`http://localhost:3000/tickets/${ticketID}`, config)
+		.then(response => {
+			localStorage.setItem('ticket', response.data);
+		})
+		.catch(erorr => {
+			console.log(error);
+		});
 };
 
 getTickets();
