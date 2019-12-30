@@ -60,6 +60,7 @@ mediumPriority = (summaryContent, ticketID, taskCompleted) => {
 	const card = document.createElement('div');
 	card.setAttribute('class', 'card medium');
 	card.setAttribute('id', `ticket${ticketID}`);
+	card.setAttribute('onClick', "selectedTicket('" + ticketID + "')");
 
 	const row = document.createElement('div');
 	row.setAttribute('class', 'row');
@@ -112,6 +113,7 @@ lowPriority = (summaryContent, ticketID, taskCompleted) => {
 	const card = document.createElement('div');
 	card.setAttribute('class', 'card low');
 	card.setAttribute('id', `ticket${ticketID}`);
+	card.setAttribute('onClick', "selectedTicket('" + ticketID + "')");
 
 	const row = document.createElement('div');
 	row.setAttribute('class', 'row');
