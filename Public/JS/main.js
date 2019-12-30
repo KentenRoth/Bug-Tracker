@@ -249,9 +249,10 @@ selectedTicket = ticketID => {
 	axios
 		.get(`http://localhost:3000/tickets/${ticketID}`, config)
 		.then(response => {
-			localStorage.setItem('ticket', response.data);
+			localStorage.setItem('ticket', JSON.stringify(response.data));
+			window.location = '/Public/edit.html';
 		})
-		.catch(erorr => {
+		.catch(error => {
 			console.log(error);
 		});
 };
