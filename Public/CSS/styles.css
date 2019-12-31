@@ -118,6 +118,7 @@ button {
 .box {
 	justify-content: center;
 	margin: 0px;
+	text-align: center;
 }
 
 .boxContent {
@@ -131,8 +132,21 @@ button {
 	background: #535353;
 	border-radius: 10px;
 	margin: 10px;
-	padding: 25px 50px;
+	padding: 25px;
 	text-align: center;
+}
+
+.cardRight {
+	background: #535353;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 25px;
+	text-align: center;
+}
+
+.col-8 {
+	margin: auto;
+	justify-content: center;
 }
 
 .high {

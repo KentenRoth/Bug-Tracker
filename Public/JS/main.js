@@ -3,17 +3,19 @@ const bug = document.getElementById('bugs');
 highPriority = (summaryContent, ticketID, taskCompleted) => {
 	const box = document.createElement('div');
 	box.setAttribute('class', 'box');
-	const card = document.createElement('div');
-	card.setAttribute('class', 'card high');
-	card.setAttribute('id', `ticket${ticketID}`);
-	card.setAttribute('onClick', "selectedTicket('" + ticketID + "')");
+	const cardLeft = document.createElement('div');
+	cardLeft.setAttribute('class', 'card high col-8');
+	cardLeft.setAttribute('id', `ticket${ticketID}`);
+	cardLeft.setAttribute('onClick', "selectedTicket('" + ticketID + "')");
+	const cardRight = document.createElement('div');
+	cardRight.setAttribute('class', 'cardRight high');
 
 	const row = document.createElement('div');
 	row.setAttribute('class', 'row');
 
 	// Col 1
-	const summaryCol = document.createElement('div');
-	summaryCol.setAttribute('class', 'col-8');
+	// const summaryCol = document.createElement('div');
+	// summaryCol.setAttribute('class', 'col-8');
 	const summaryTitle = document.createElement('div');
 	summaryTitle.setAttribute('class', 'summary');
 	summaryTitle.textContent = 'Summary:';
@@ -21,14 +23,17 @@ highPriority = (summaryContent, ticketID, taskCompleted) => {
 	summaryMain.setAttribute('class', 'summary');
 	summaryMain.textContent = summaryContent;
 
-	row.appendChild(summaryCol);
-	summaryCol.appendChild(summaryTitle);
+	row.appendChild(cardLeft);
+	cardLeft.appendChild(summaryTitle);
+	// summaryCol.appendChild(summaryTitle);
 	summaryTitle.appendChild(summaryMain);
-
+	bug.appendChild(box);
+	// box.appendChild(cardRight);
+	box.appendChild(row);
 	// Col 2
 
-	const completeCol = document.createElement('div');
-	completeCol.setAttribute('class', 'complete col-4');
+	// const completeCol = document.createElement('div');
+	// completeCol.setAttribute('class', 'complete col-4');
 	const completeTop = document.createElement('div');
 	completeTop.setAttribute('class', 'top');
 	completeTop.textContent = 'Complete';
@@ -42,33 +47,32 @@ highPriority = (summaryContent, ticketID, taskCompleted) => {
 	complete.setAttribute('onClick', "checkboxClicked('" + ticketID + "')");
 	if (taskCompleted === true) {
 		complete.setAttribute('checked', 'true');
-		card.setAttribute('class', 'card completed');
+		cardLeft.setAttribute('class', 'card completed col-8');
 	}
 
-	row.appendChild(completeCol);
-	completeCol.appendChild(completeTop);
+	row.appendChild(cardRight);
+	// cardRight.appendChild(completeCol);
+	cardRight.appendChild(completeTop);
 	completeTop.appendChild(completeCheck);
 	completeCheck.appendChild(complete);
-
-	bug.appendChild(box);
-	box.appendChild(card);
-	card.appendChild(row);
 };
 
 mediumPriority = (summaryContent, ticketID, taskCompleted) => {
 	const box = document.createElement('div');
 	box.setAttribute('class', 'box');
-	const card = document.createElement('div');
-	card.setAttribute('class', 'card medium');
-	card.setAttribute('id', `ticket${ticketID}`);
-	card.setAttribute('onClick', "selectedTicket('" + ticketID + "')");
+	const cardLeft = document.createElement('div');
+	cardLeft.setAttribute('class', 'card medium col-8');
+	cardLeft.setAttribute('id', `ticket${ticketID}`);
+	cardLeft.setAttribute('onClick', "selectedTicket('" + ticketID + "')");
+	const cardRight = document.createElement('div');
+	cardRight.setAttribute('class', 'cardRight medium');
 
 	const row = document.createElement('div');
 	row.setAttribute('class', 'row');
 
 	// Col 1
-	const summaryCol = document.createElement('div');
-	summaryCol.setAttribute('class', 'col-8');
+	// const summaryCol = document.createElement('div');
+	// summaryCol.setAttribute('class', 'col-8');
 	const summaryTitle = document.createElement('div');
 	summaryTitle.setAttribute('class', 'summary');
 	summaryTitle.textContent = 'Summary:';
@@ -76,14 +80,17 @@ mediumPriority = (summaryContent, ticketID, taskCompleted) => {
 	summaryMain.setAttribute('class', 'summary');
 	summaryMain.textContent = summaryContent;
 
-	row.appendChild(summaryCol);
-	summaryCol.appendChild(summaryTitle);
+	row.appendChild(cardLeft);
+	cardLeft.appendChild(summaryTitle);
+	// summaryCol.appendChild(summaryTitle);
 	summaryTitle.appendChild(summaryMain);
-
+	bug.appendChild(box);
+	// box.appendChild(cardRight);
+	box.appendChild(row);
 	// Col 2
 
-	const completeCol = document.createElement('div');
-	completeCol.setAttribute('class', 'complete col-4');
+	// const completeCol = document.createElement('div');
+	// completeCol.setAttribute('class', 'complete col-4');
 	const completeTop = document.createElement('div');
 	completeTop.setAttribute('class', 'top');
 	completeTop.textContent = 'Complete';
@@ -91,38 +98,38 @@ mediumPriority = (summaryContent, ticketID, taskCompleted) => {
 	completeCheck.setAttribute('class', 'checkboxHouse');
 	const complete = document.createElement('input');
 	complete.setAttribute('class', 'complete');
+	complete.setAttribute('id', 'checkbox');
 	complete.setAttribute('type', 'checkbox');
 	complete.setAttribute('id', `${ticketID}`);
 	complete.setAttribute('onClick', "checkboxClicked('" + ticketID + "')");
 	if (taskCompleted === true) {
 		complete.setAttribute('checked', 'true');
-		card.setAttribute('class', 'card completed');
+		cardLeft.setAttribute('class', 'card completed col-8');
 	}
 
-	row.appendChild(completeCol);
-	completeCol.appendChild(completeTop);
+	row.appendChild(cardRight);
+	// cardRight.appendChild(completeCol);
+	cardRight.appendChild(completeTop);
 	completeTop.appendChild(completeCheck);
 	completeCheck.appendChild(complete);
-
-	bug.appendChild(box);
-	box.appendChild(card);
-	card.appendChild(row);
 };
 
 lowPriority = (summaryContent, ticketID, taskCompleted) => {
 	const box = document.createElement('div');
 	box.setAttribute('class', 'box');
-	const card = document.createElement('div');
-	card.setAttribute('class', 'card low');
-	card.setAttribute('id', `ticket${ticketID}`);
-	card.setAttribute('onClick', "selectedTicket('" + ticketID + "')");
+	const cardLeft = document.createElement('div');
+	cardLeft.setAttribute('class', 'card low col-8');
+	cardLeft.setAttribute('id', `ticket${ticketID}`);
+	cardLeft.setAttribute('onClick', "selectedTicket('" + ticketID + "')");
+	const cardRight = document.createElement('div');
+	cardRight.setAttribute('class', 'cardRight low');
 
 	const row = document.createElement('div');
 	row.setAttribute('class', 'row');
 
 	// Col 1
-	const summaryCol = document.createElement('div');
-	summaryCol.setAttribute('class', 'col-8');
+	// const summaryCol = document.createElement('div');
+	// summaryCol.setAttribute('class', 'col-8');
 	const summaryTitle = document.createElement('div');
 	summaryTitle.setAttribute('class', 'summary');
 	summaryTitle.textContent = 'Summary:';
@@ -130,14 +137,17 @@ lowPriority = (summaryContent, ticketID, taskCompleted) => {
 	summaryMain.setAttribute('class', 'summary');
 	summaryMain.textContent = summaryContent;
 
-	row.appendChild(summaryCol);
-	summaryCol.appendChild(summaryTitle);
+	row.appendChild(cardLeft);
+	cardLeft.appendChild(summaryTitle);
+	// summaryCol.appendChild(summaryTitle);
 	summaryTitle.appendChild(summaryMain);
-
+	bug.appendChild(box);
+	// box.appendChild(cardRight);
+	box.appendChild(row);
 	// Col 2
 
-	const completeCol = document.createElement('div');
-	completeCol.setAttribute('class', 'complete col-4');
+	// const completeCol = document.createElement('div');
+	// completeCol.setAttribute('class', 'complete col-4');
 	const completeTop = document.createElement('div');
 	completeTop.setAttribute('class', 'top');
 	completeTop.textContent = 'Complete';
@@ -145,22 +155,20 @@ lowPriority = (summaryContent, ticketID, taskCompleted) => {
 	completeCheck.setAttribute('class', 'checkboxHouse');
 	const complete = document.createElement('input');
 	complete.setAttribute('class', 'complete');
+	complete.setAttribute('id', 'checkbox');
 	complete.setAttribute('type', 'checkbox');
 	complete.setAttribute('id', `${ticketID}`);
 	complete.setAttribute('onClick', "checkboxClicked('" + ticketID + "')");
 	if (taskCompleted === true) {
 		complete.setAttribute('checked', 'true');
-		card.setAttribute('class', 'card completed');
+		cardLeft.setAttribute('class', 'card completed col-8');
 	}
 
-	row.appendChild(completeCol);
-	completeCol.appendChild(completeTop);
+	row.appendChild(cardRight);
+	// cardRight.appendChild(completeCol);
+	cardRight.appendChild(completeTop);
 	completeTop.appendChild(completeCheck);
 	completeCheck.appendChild(complete);
-
-	bug.appendChild(box);
-	box.appendChild(card);
-	card.appendChild(row);
 };
 
 const token = localStorage.getItem('authToken');
@@ -183,9 +191,9 @@ checkboxClicked = ticketID => {
 updateTaskDisplay = (id, priority, completed) => {
 	const ticket = document.getElementById('ticket' + id);
 	if (completed === false) {
-		ticket.setAttribute('class', `card ${priority}`);
+		ticket.setAttribute('class', `card ${priority} col-8`);
 	} else {
-		ticket.setAttribute('class', 'card completed');
+		ticket.setAttribute('class', 'card completed col-8');
 	}
 };
 
