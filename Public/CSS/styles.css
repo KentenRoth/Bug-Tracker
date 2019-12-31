@@ -150,15 +150,15 @@ button {
 }
 
 .high {
-	border: 6px rgb(255, 30, 30) solid;
+	border: 6px #ff0000 solid;
 }
 
 .medium {
-	border: 4px rgb(255, 128, 0) solid;
+	border: 4px #ffa500 solid;
 }
 
 .low {
-	border: 4px rgb(255, 255, 45) solid;
+	border: 4px #ffff00 solid;
 }
 
 .completed {
