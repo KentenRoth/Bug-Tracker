@@ -16,7 +16,7 @@
 						<div class="title">
 							<h3>Edit</h3>
 						</div>
-						<form onsubmit="saveTicket(); return false">
+						<form id="form">
 							<div class="formInput">
 								<p id="projectInput" class="projectInput">
 									Project Name
@@ -80,7 +80,10 @@
 							</div>
 						</form>
 						<div class="completedButton">
-							<button class="button complete">Completed</button>
+							<button
+								id="complete"
+								class="button complete"
+							></button>
 						</div>
 						<div>
 							<button class="button delete">Delete</button>
@@ -95,6 +98,6 @@
 		</div>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src="./JS/styles.js" async defer></script>
-		<script src="./JS/create.js" async defer></script>
+		<script src="./JS/edit.js" async defer></script>
 	</body>
 </html>

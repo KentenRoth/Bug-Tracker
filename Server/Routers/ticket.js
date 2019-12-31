@@ -43,7 +43,13 @@ router.get('/tickets/:id', auth, async (req, res) => {
 
 router.patch('/tickets/:id', auth, async (req, res) => {
 	const updates = Object.keys(req.body);
-	const allowedUpdates = ['completed', 'priority', 'summary', 'description'];
+	const allowedUpdates = [
+		'completed',
+		'priority',
+		'project',
+		'summary',
+		'description'
+	];
 	const isValidUpdate = updates.every(update =>
 		allowedUpdates.includes(update)
 	);
