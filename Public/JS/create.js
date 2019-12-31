@@ -1,4 +1,5 @@
 const token = localStorage.getItem('authToken');
+
 const config = {
 	headers: {
 		Authorization: 'Bearer ' + token
@@ -30,11 +31,14 @@ priorityError = () => {
 		.getElementById('priority')
 		.value.trim()
 		.toLowerCase();
-	if (priority !== 'high' || priority !== 'medium' || priority !== 'low') {
+	console.log(priority);
+	if (priority === 'high' || priority === 'medium' || priority === 'low') {
+		const noError = document.getElementById('priorityError');
+		noError.setAttribute('class', 'priotiryError noError');
+	} else {
+		console.log('running');
 		errors.push('priorityError');
 	}
-	const noError = document.getElementById('priorityError');
-	noError.setAttribute('class', 'priotiryError noError');
 };
 
 descriptionError = () => {
@@ -64,7 +68,6 @@ saveTicket = () => {
 	priorityError();
 	descriptionError();
 	if (errors.length === 0) {
-		console.log('running');
 		axios
 			.post(
 				'http://localhost:3000/tickets',
@@ -72,7 +75,8 @@ saveTicket = () => {
 					project,
 					summary,
 					priority,
-					description
+					description,
+					completed: false
 				},
 				config
 			)
@@ -80,6 +84,9 @@ saveTicket = () => {
 				if (response.status === 200) {
 					window.location = '/Public/main.html';
 				}
+			})
+			.catch(error => {
+				console.log(error);
 			});
 	} else {
 		displayErrors();

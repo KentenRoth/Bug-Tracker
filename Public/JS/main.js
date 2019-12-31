@@ -42,6 +42,7 @@ highPriority = (summaryContent, ticketID, taskCompleted) => {
 	complete.setAttribute('onClick', "checkboxClicked('" + ticketID + "')");
 	if (taskCompleted === true) {
 		complete.setAttribute('checked', 'true');
+		card.setAttribute('class', 'card completed');
 	}
 
 	row.appendChild(completeCol);
@@ -95,6 +96,7 @@ mediumPriority = (summaryContent, ticketID, taskCompleted) => {
 	complete.setAttribute('onClick', "checkboxClicked('" + ticketID + "')");
 	if (taskCompleted === true) {
 		complete.setAttribute('checked', 'true');
+		card.setAttribute('class', 'card completed');
 	}
 
 	row.appendChild(completeCol);
@@ -148,6 +150,7 @@ lowPriority = (summaryContent, ticketID, taskCompleted) => {
 	complete.setAttribute('onClick', "checkboxClicked('" + ticketID + "')");
 	if (taskCompleted === true) {
 		complete.setAttribute('checked', 'true');
+		card.setAttribute('class', 'card completed');
 	}
 
 	row.appendChild(completeCol);
@@ -248,6 +251,7 @@ getTickets = () => {
 };
 
 selectedTicket = ticketID => {
+	console.log('running');
 	axios
 		.get(`http://localhost:3000/tickets/${ticketID}`, config)
 		.then(response => {
