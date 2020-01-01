@@ -14,8 +14,6 @@ highPriority = (summaryContent, ticketID, taskCompleted) => {
 	row.setAttribute('class', 'row');
 
 	// Col 1
-	// const summaryCol = document.createElement('div');
-	// summaryCol.setAttribute('class', 'col-8');
 	const summaryTitle = document.createElement('div');
 	summaryTitle.setAttribute('class', 'summary');
 	summaryTitle.textContent = 'Summary:';
@@ -25,15 +23,11 @@ highPriority = (summaryContent, ticketID, taskCompleted) => {
 
 	row.appendChild(cardLeft);
 	cardLeft.appendChild(summaryTitle);
-	// summaryCol.appendChild(summaryTitle);
 	summaryTitle.appendChild(summaryMain);
 	bug.appendChild(box);
-	// box.appendChild(cardRight);
 	box.appendChild(row);
-	// Col 2
 
-	// const completeCol = document.createElement('div');
-	// completeCol.setAttribute('class', 'complete col-4');
+	// Col 2
 	const completeTop = document.createElement('div');
 	completeTop.setAttribute('class', 'top');
 	completeTop.textContent = 'Complete';
@@ -51,7 +45,6 @@ highPriority = (summaryContent, ticketID, taskCompleted) => {
 	}
 
 	row.appendChild(cardRight);
-	// cardRight.appendChild(completeCol);
 	cardRight.appendChild(completeTop);
 	completeTop.appendChild(completeCheck);
 	completeCheck.appendChild(complete);
@@ -71,8 +64,6 @@ mediumPriority = (summaryContent, ticketID, taskCompleted) => {
 	row.setAttribute('class', 'row');
 
 	// Col 1
-	// const summaryCol = document.createElement('div');
-	// summaryCol.setAttribute('class', 'col-8');
 	const summaryTitle = document.createElement('div');
 	summaryTitle.setAttribute('class', 'summary');
 	summaryTitle.textContent = 'Summary:';
@@ -82,15 +73,11 @@ mediumPriority = (summaryContent, ticketID, taskCompleted) => {
 
 	row.appendChild(cardLeft);
 	cardLeft.appendChild(summaryTitle);
-	// summaryCol.appendChild(summaryTitle);
 	summaryTitle.appendChild(summaryMain);
 	bug.appendChild(box);
-	// box.appendChild(cardRight);
 	box.appendChild(row);
-	// Col 2
 
-	// const completeCol = document.createElement('div');
-	// completeCol.setAttribute('class', 'complete col-4');
+	// Col 2
 	const completeTop = document.createElement('div');
 	completeTop.setAttribute('class', 'top');
 	completeTop.textContent = 'Complete';
@@ -108,7 +95,6 @@ mediumPriority = (summaryContent, ticketID, taskCompleted) => {
 	}
 
 	row.appendChild(cardRight);
-	// cardRight.appendChild(completeCol);
 	cardRight.appendChild(completeTop);
 	completeTop.appendChild(completeCheck);
 	completeCheck.appendChild(complete);
@@ -128,8 +114,6 @@ lowPriority = (summaryContent, ticketID, taskCompleted) => {
 	row.setAttribute('class', 'row');
 
 	// Col 1
-	// const summaryCol = document.createElement('div');
-	// summaryCol.setAttribute('class', 'col-8');
 	const summaryTitle = document.createElement('div');
 	summaryTitle.setAttribute('class', 'summary');
 	summaryTitle.textContent = 'Summary:';
@@ -139,15 +123,11 @@ lowPriority = (summaryContent, ticketID, taskCompleted) => {
 
 	row.appendChild(cardLeft);
 	cardLeft.appendChild(summaryTitle);
-	// summaryCol.appendChild(summaryTitle);
 	summaryTitle.appendChild(summaryMain);
 	bug.appendChild(box);
-	// box.appendChild(cardRight);
 	box.appendChild(row);
-	// Col 2
 
-	// const completeCol = document.createElement('div');
-	// completeCol.setAttribute('class', 'complete col-4');
+	// Col 2
 	const completeTop = document.createElement('div');
 	completeTop.setAttribute('class', 'top');
 	completeTop.textContent = 'Complete';
@@ -165,7 +145,6 @@ lowPriority = (summaryContent, ticketID, taskCompleted) => {
 	}
 
 	row.appendChild(cardRight);
-	// cardRight.appendChild(completeCol);
 	cardRight.appendChild(completeTop);
 	completeTop.appendChild(completeCheck);
 	completeCheck.appendChild(complete);
@@ -259,7 +238,6 @@ getTickets = () => {
 };
 
 selectedTicket = ticketID => {
-	console.log('running');
 	axios
 		.get(`http://localhost:3000/tickets/${ticketID}`, config)
 		.then(response => {

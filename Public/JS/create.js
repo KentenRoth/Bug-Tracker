@@ -31,12 +31,10 @@ priorityError = () => {
 		.getElementById('priority')
 		.value.trim()
 		.toLowerCase();
-	console.log(priority);
 	if (priority === 'high' || priority === 'medium' || priority === 'low') {
 		const noError = document.getElementById('priorityError');
 		noError.setAttribute('class', 'priotiryError noError');
 	} else {
-		console.log('running');
 		errors.push('priorityError');
 	}
 };
