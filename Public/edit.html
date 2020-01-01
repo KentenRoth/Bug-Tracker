@@ -7,6 +7,7 @@
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="./CSS/styles.css" />
+		<link rel="stylesheet" href="./CSS/errors.css" />
 	</head>
 	<body>
 		<div class="content">
@@ -17,6 +18,38 @@
 							<h3>Edit</h3>
 						</div>
 						<form id="form">
+							<div class="errorBox">
+								<p
+									id="noTicketError"
+									class="noTicketError noError"
+								>
+									Ticket Not Found
+								</p>
+								<p
+									id="projectError"
+									class="projectError noError"
+								>
+									Project: 1-50 characters
+								</p>
+								<p
+									id="summaryError"
+									class="summaryError noError"
+								>
+									Summary: 1-100 characters
+								</p>
+								<p
+									id="priorityError"
+									class="priorityError noError"
+								>
+									Priority: High, Medium, Low
+								</p>
+								<p
+									id="descriptionError"
+									class="descriptionError noError"
+								>
+									Description: 1-500 characters is the limit
+								</p>
+							</div>
 							<div class="formInput">
 								<p id="projectInput" class="projectInput">
 									Project Name
@@ -86,7 +119,9 @@
 							></button>
 						</div>
 						<div>
-							<button class="button delete">Delete</button>
+							<button id="remove" class="button remove">
+								Delete
+							</button>
 						</div>
 
 						<div class="home">
