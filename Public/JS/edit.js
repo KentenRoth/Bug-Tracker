@@ -11,7 +11,7 @@ const config = {
 setButtons = () => {
 	const id = ticket._id;
 	const complete = document.getElementById('complete');
-	const remove = document.getElementById('delete');
+	const remove = document.getElementById('remove');
 	complete.setAttribute('onClick', "completedTicket('" + id + "')");
 	remove.setAttribute('onclick', "removeTicket('" + id + "')");
 
