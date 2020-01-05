@@ -10,7 +10,6 @@ const TicketSchema = new Schema({
 	summary: {
 		type: String,
 		required: true,
-		minlength: 5,
 		trim: true
 	},
 	description: {
