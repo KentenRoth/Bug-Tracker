@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Ticket = require('./Ticket');
 const Schema = mongoose.Schema;
+require('dotenv').config();
 
 const UserSchema = new Schema({
 	name: {
@@ -49,7 +50,10 @@ UserSchema.virtual('tickets', {
 
 UserSchema.methods.createAuthToken = async function() {
 	const user = this;
-	const token = jwt.sign({ _id: user._id.toString() }, 'willHideThisLater');
+	const token = jwt.sign(
+		{ _id: user._id.toString() },
+		process.env.HIDDEN_SENTENCE
+	);
 
 	user.tokens = user.tokens.concat({ token });
 	await user.save();
