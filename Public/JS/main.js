@@ -223,6 +223,7 @@ unCompletedTicket = id => {
 getTickets = () => {
 	axios.get('http://localhost:3000/tickets', config).then(response => {
 		const tickets = response.data;
+		sortByPriority(tickets);
 		tickets.map(ticket => {
 			if (ticket.priority === 'high') {
 				highPriority(ticket.summary, ticket._id, ticket.completed);
@@ -234,6 +235,17 @@ getTickets = () => {
 				lowPriority(ticket.summary, ticket._id, ticket.completed);
 			}
 		});
+	});
+};
+
+sortByPriority = tickets => {
+	var priorityLevels = {
+		high: 0,
+		medium: 1,
+		low: 2
+	};
+	tickets.sort((a, b) => {
+		return priorityLevels[a.priority] - priorityLevels[b.priority];
 	});
 };
 
