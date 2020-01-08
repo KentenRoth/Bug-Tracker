@@ -96,6 +96,7 @@ button {
 	display: flex;
 	justify-content: center;
 	overflow: hidden;
+	margin-top: 30px;
 }
 
 .content {

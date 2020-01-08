@@ -1,7 +1,12 @@
 .navbar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
 	background: #383838;
 	border-bottom: 2px solid #009cf5;
 	height: 50px;
+	z-index: 1;
 }
 
 .create {
@@ -55,4 +60,14 @@ input[type='checkbox'] {
 }
 input[type='checkbox']:checked {
 	background: #009cf5;
+}
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: #383838;
+	border-top: 2px solid #009cf5;
+	height: 50px;
 }
