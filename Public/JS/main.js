@@ -224,6 +224,7 @@ getTickets = () => {
 	axios.get('http://localhost:3000/tickets', config).then(response => {
 		const tickets = response.data;
 		sortByPriority(tickets);
+		projectSelect(tickets);
 		tickets.map(ticket => {
 			if (ticket.priority === 'high') {
 				highPriority(ticket.summary, ticket._id, ticket.completed);
@@ -236,6 +237,31 @@ getTickets = () => {
 			}
 		});
 	});
+};
+
+projectSelect = tickets => {
+	const projectName = document.getElementById('projectName');
+	const projectSelect = document.createElement('select');
+	let projectTitle = [];
+	tickets.map(ticket => {
+		const projectTitleConsistency = ticket.project
+			.toLowerCase()
+			.split(' ')
+			.map(s => s.charAt(0).toUpperCase() + s.substring(1))
+			.join(' ');
+
+		const lowerCase = ticket.project.toLowerCase();
+
+		if (!projectTitle.includes(lowerCase)) {
+			projectTitle.push(lowerCase);
+			const projectOption = document.createElement('option');
+			projectOption.setAttribute('value', lowerCase);
+			projectOption.textContent = projectTitleConsistency;
+
+			projectSelect.appendChild(projectOption);
+		}
+	});
+	projectName.appendChild(projectSelect);
 };
 
 sortByPriority = tickets => {
