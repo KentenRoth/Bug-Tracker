@@ -26,6 +26,16 @@
 	padding-bottom: 5px;
 }
 
+.red {
+	cursor: pointer;
+	color: red;
+}
+
+.yellow {
+	cursor: pointer;
+	color: yellow;
+}
+
 .user {
 	color: #009cf5;
 }
@@ -55,8 +65,8 @@ input[type='checkbox'] {
 	-webkit-appearance: none;
 	width: 15px;
 	height: 15px;
-	background: #383838;
-	border-radius: 2px;
+	border: 2px solid white;
+	border-radius: 3px;
 }
 input[type='checkbox']:checked {
 	background: #009cf5;
@@ -70,4 +80,10 @@ input[type='checkbox']:checked {
 	background: #383838;
 	border-top: 2px solid #009cf5;
 	height: 50px;
+}
+
+.showCompleted {
+	font-weight: 900;
+	color: #009cf5;
+	margin-bottom: 10px;
 }

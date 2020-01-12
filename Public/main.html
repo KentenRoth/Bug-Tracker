@@ -54,8 +54,25 @@
 		<div class="footer">
 			<div class="container">
 				<div class="row">
-					<div class="col-6">Priority Sort</div>
-					<div class="col-6">Show Completed</div>
+					<div class="col-6">
+						<div class="prioritySort">
+							<i
+								onClick="displayTickets()"
+								id="prioritySortButton"
+								class="fas fa-angle-up fa-3x yellow"
+							></i>
+						</div>
+					</div>
+					<div class="col-6 showCompleted">
+						Show Completed
+						<div class="checkboxHouse">
+							<input
+								class="complete"
+								id="hideCompleted"
+								type="checkbox"
+							/>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
