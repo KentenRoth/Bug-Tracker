@@ -221,69 +221,44 @@ unCompletedTicket = id => {
 };
 
 getTickets = () => {
-	return axios.get('http://localhost:3000/tickets', config).then(response => {
-		this.response = response.data;
-		return this.response;
+	axios.get('http://localhost:3000/tickets', config).then(response => {
+		const tickets = response.data;
+		projectSelect(tickets);
+		tickets.map(ticket => {
+			if (ticket.priority === 'high') {
+				highPriority(ticket.summary, ticket._id, ticket.completed);
+			}
+			if (ticket.priority === 'medium') {
+				mediumPriority(ticket.summary, ticket._id, ticket.completed);
+			}
+			if (ticket.priority === 'low') {
+				lowPriority(ticket.summary, ticket._id, ticket.completed);
+			}
+		});
 	});
 };
-
-let ticketPromise = getTickets();
-
-const allTickets = [];
-
-displayTickets = tickets => {
-	if (allTickets.length > 0) {
-		allTickets.map(ticket => {
-			console.log(ticket);
-		});
-	} else {
-		tickets.then(ticket => {
-			allTickets.push(ticket);
-			sortByPriority(ticket);
-			ticket.map(ticket => {
-				if (ticket.priority === 'high') {
-					highPriority(ticket.summary, ticket._id, ticket.completed);
-				}
-				if (ticket.priority === 'medium') {
-					mediumPriority(
-						ticket.summary,
-						ticket._id,
-						ticket.completed
-					);
-				}
-				if (ticket.priority === 'low') {
-					lowPriority(ticket.summary, ticket._id, ticket.completed);
-				}
-			});
-		});
-	}
-};
-
-displayTickets(ticketPromise);
 
 projectSelect = tickets => {
 	const projectName = document.getElementById('projectName');
 	const projectSelect = document.createElement('select');
 	let projectTitle = [];
-	tickets.then(ticket => {
-		ticket.map(ticket => {
-			const projectTitleConsistency = ticket.project
-				.toLowerCase()
-				.split(' ')
-				.map(s => s.charAt(0).toUpperCase() + s.substring(1))
-				.join(' ');
+	tickets.map(ticket => {
+		const projectTitleConsistency = ticket.project
+			.toLowerCase()
+			.split(' ')
+			.map(s => s.charAt(0).toUpperCase() + s.substring(1))
+			.join(' ');
 
-			const lowerCase = ticket.project.toLowerCase();
+		const lowerCase = ticket.project.toLowerCase();
 
-			if (!projectTitle.includes(lowerCase)) {
-				projectTitle.push(lowerCase);
-				const projectOption = document.createElement('option');
-				projectOption.setAttribute('value', lowerCase);
-				projectOption.textContent = projectTitleConsistency;
+		if (!projectTitle.includes(lowerCase)) {
+			projectTitle.push(lowerCase);
+			const projectOption = document.createElement('option');
+			projectOption.setAttribute('value', lowerCase);
+			projectOption.textContent = projectTitleConsistency;
 
-				projectSelect.appendChild(projectOption);
-			}
-		});
+			projectSelect.appendChild(projectOption);
+		}
 	});
 
 	projectName.appendChild(projectSelect);
@@ -312,4 +287,4 @@ selectedTicket = ticketID => {
 		});
 };
 
-projectSelect(ticketPromise);
+getTickets();

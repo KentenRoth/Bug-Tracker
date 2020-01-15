@@ -18,8 +18,18 @@ router.post('/tickets', auth, async (req, res) => {
 });
 
 router.get('/tickets', auth, async (req, res) => {
+	const match = {};
+
+	if (req.query.completed) {
+		match.completed = req.query.completed === 'true';
+	}
 	try {
-		await req.user.populate('tickets').execPopulate();
+		await req.user
+			.populate({
+				path: 'tickets',
+				match
+			})
+			.execPopulate();
 		res.send(req.user.tickets);
 	} catch (error) {
 		res.status(500).send(error);
