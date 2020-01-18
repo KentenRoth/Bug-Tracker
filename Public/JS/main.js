@@ -221,9 +221,18 @@ unCompletedTicket = id => {
 };
 
 getTickets = () => {
-	axios.get('http://localhost:3000/tickets', config).then(response => {
+	let url = '';
+	let showCompleted = localStorage.getItem('hideCompleted');
+	if (showCompleted === 'false') {
+		url = 'http://localhost:3000/tickets?completed=false';
+	} else {
+		url = 'http://localhost:3000/tickets';
+	}
+	axios.get(`${url}`, config).then(response => {
 		const tickets = response.data;
 		projectSelect(tickets);
+		sortByPriority(tickets);
+		hideCompleted();
 		tickets.map(ticket => {
 			if (ticket.priority === 'high') {
 				highPriority(ticket.summary, ticket._id, ticket.completed);
@@ -264,6 +273,17 @@ projectSelect = tickets => {
 	projectName.appendChild(projectSelect);
 };
 
+showCompletedChecked = () => {
+	const isChecked = document.getElementById('hideCompleted').checked;
+
+	if (isChecked === true) {
+		localStorage.setItem('hideCompleted', true);
+		return true;
+	} else {
+		localStorage.setItem('hideCompleted', false);
+	}
+};
+
 sortByPriority = tickets => {
 	var priorityLevels = {
 		high: 0,
@@ -287,4 +307,18 @@ selectedTicket = ticketID => {
 		});
 };
 
+toggleHideCompletedInLS = () => {
+	let hideCompletedValue = document.getElementById('hideCompleted').checked;
+	localStorage.setItem('hideCompleted', hideCompletedValue);
+	location.reload();
+};
+
+hideCompleted = () => {
+	let hideCompletedDisplay = document.getElementById('hideCompleted');
+	let hideCompletedLS = localStorage.getItem('hideCompleted');
+
+	if (hideCompletedLS === 'true') {
+		hideCompletedDisplay.setAttribute('checked', 'true');
+	}
+};
 getTickets();

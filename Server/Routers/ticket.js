@@ -23,6 +23,7 @@ router.get('/tickets', auth, async (req, res) => {
 	if (req.query.completed) {
 		match.completed = req.query.completed === 'true';
 	}
+
 	try {
 		await req.user
 			.populate({
