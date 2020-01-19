@@ -233,7 +233,7 @@ getTickets = () => {
 		projectSelect(tickets);
 		sortByPriority(tickets);
 		hideCompleted();
-		tickets.map(ticket => {
+		sortByProjectName(tickets).map(ticket => {
 			if (ticket.priority === 'high') {
 				highPriority(ticket.summary, ticket._id, ticket.completed);
 			}
@@ -250,6 +250,7 @@ getTickets = () => {
 projectSelect = tickets => {
 	const projectName = document.getElementById('projectName');
 	const projectSelect = document.createElement('select');
+	projectSelect.setAttribute('id', 'projectSelect');
 	let projectTitle = [];
 	tickets.map(ticket => {
 		const projectTitleConsistency = ticket.project
@@ -271,6 +272,7 @@ projectSelect = tickets => {
 	});
 
 	projectName.appendChild(projectSelect);
+	sortByProjectName(tickets);
 };
 
 showCompletedChecked = () => {
@@ -282,6 +284,19 @@ showCompletedChecked = () => {
 	} else {
 		localStorage.setItem('hideCompleted', false);
 	}
+};
+
+sortByProjectName = tickets => {
+	let currentProject = [];
+	const e = document.getElementById('projectSelect');
+	const projectName = e.options[e.selectedIndex].value;
+
+	tickets.map(ticket => {
+		if (ticket.project.toLowerCase() === projectName) {
+			currentProject.push(ticket);
+		}
+	});
+	return currentProject;
 };
 
 sortByPriority = tickets => {
@@ -317,8 +332,9 @@ hideCompleted = () => {
 	let hideCompletedDisplay = document.getElementById('hideCompleted');
 	let hideCompletedLS = localStorage.getItem('hideCompleted');
 
-	if (hideCompletedLS === 'true') {
+	if (hideCompletedLS === 'true' || hideCompletedLS === null) {
 		hideCompletedDisplay.setAttribute('checked', 'true');
 	}
 };
+
 getTickets();
