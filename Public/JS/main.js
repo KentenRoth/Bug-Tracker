@@ -251,6 +251,7 @@ projectSelect = tickets => {
 	const projectName = document.getElementById('projectName');
 	const projectSelect = document.createElement('select');
 	projectSelect.setAttribute('id', 'projectSelect');
+	projectSelect.setAttribute('onchange', 'setProjectName()');
 	let projectTitle = [];
 	tickets.map(ticket => {
 		const projectTitleConsistency = ticket.project
@@ -265,6 +266,7 @@ projectSelect = tickets => {
 			projectTitle.push(lowerCase);
 			const projectOption = document.createElement('option');
 			projectOption.setAttribute('value', lowerCase);
+			projectOption.setAttribute('id', lowerCase);
 			projectOption.textContent = projectTitleConsistency;
 
 			projectSelect.appendChild(projectOption);
@@ -272,18 +274,29 @@ projectSelect = tickets => {
 	});
 
 	projectName.appendChild(projectSelect);
+	setSelectedProject(projectTitle);
 	sortByProjectName(tickets);
 };
 
-showCompletedChecked = () => {
-	const isChecked = document.getElementById('hideCompleted').checked;
-
-	if (isChecked === true) {
-		localStorage.setItem('hideCompleted', true);
-		return true;
-	} else {
-		localStorage.setItem('hideCompleted', false);
+setSelectedProject = arr => {
+	if (arr.length <= 1) {
+		return;
 	}
+	const projectSelected = localStorage.getItem('projectName');
+	arr.map(project => {
+		if (project === projectSelected) {
+			const currentProject = document.getElementById(projectSelected);
+			currentProject.setAttribute('selected', true);
+			console.log(currentProject);
+		}
+	});
+};
+
+setProjectName = () => {
+	const e = document.getElementById('projectSelect');
+	const projectName = e.options[e.selectedIndex].value;
+	localStorage.setItem('projectName', projectName);
+	location.reload();
 };
 
 sortByProjectName = tickets => {
@@ -320,6 +333,17 @@ selectedTicket = ticketID => {
 		.catch(error => {
 			console.log(error);
 		});
+};
+
+showCompletedChecked = () => {
+	const isChecked = document.getElementById('hideCompleted').checked;
+
+	if (isChecked === true) {
+		localStorage.setItem('hideCompleted', true);
+		return true;
+	} else {
+		localStorage.setItem('hideCompleted', false);
+	}
 };
 
 toggleHideCompletedInLS = () => {
