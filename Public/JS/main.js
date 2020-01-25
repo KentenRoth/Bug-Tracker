@@ -287,7 +287,6 @@ setSelectedProject = arr => {
 		if (project === projectSelected) {
 			const currentProject = document.getElementById(projectSelected);
 			currentProject.setAttribute('selected', true);
-			console.log(currentProject);
 		}
 	});
 };
