@@ -8,16 +8,18 @@ const config = {
 
 logoutAllAccounts = () => {
 	axios
-		.post('http://localhost:3000/users/logoutAll', config)
+		.post('http://localhost:3000/users/logoutAll', {}, config)
 		.then(response => {
+			console.log(response);
 			if (response.status === 200) {
-				window.location = '/Public/index.html';
+				window.location = '/Public';
 			}
 		})
 		.catch(error => {
 			console.log(error);
 		});
 };
+let emial = '';
 
 gettingProfileInformation = () => {
 	const nameInput = document.getElementById('name');
@@ -27,6 +29,7 @@ gettingProfileInformation = () => {
 		.then(response => {
 			nameInput.setAttribute('value', response.data.name);
 			emailInput.setAttribute('value', response.data.email);
+			email = response.data.email;
 		})
 		.catch(error => console.log(error));
 };
