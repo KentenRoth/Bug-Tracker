@@ -16,7 +16,7 @@
 						<div class="title">
 							<h3>Edit User</h3>
 						</div>
-						<div class="form">
+						<form class="form">
 							<div class="formInput">
 								<p id="nameInput" class="nameInput">
 									Name
@@ -96,17 +96,17 @@
 								<a href=""><p>Don't save changes</p></a>
 							</div>
 							<div class="home logoutAll">
-								<a href=""><p>Logout all acounts.</p></a>
+								<a href="#" onclick="logoutAllAccounts()"
+									><p>Logout all acounts.</p></a
+								>
 							</div>
-							<div class="home delete">
-								<a href=""><p>Delete Account</p></a>
-							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src="./JS/styles.js" async defer></script>
+		<script src="./JS/profile.js" async defer></script>
 	</body>
 </html>
