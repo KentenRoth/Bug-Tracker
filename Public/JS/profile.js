@@ -19,7 +19,9 @@ logoutAllAccounts = () => {
 			console.log(error);
 		});
 };
+
 let userEmail = '';
+let errors = [];
 
 gettingProfileInformation = () => {
 	const nameInput = document.getElementById('name');
@@ -35,11 +37,20 @@ gettingProfileInformation = () => {
 };
 
 saveEditsToProfile = () => {
+	errors = [];
 	const password = document.getElementById('pass1').value;
-	if (password.length === 0) {
-		changesToProfileNotPassword();
+	nameError();
+	passwordError();
+	emailError();
+	console.log(errors);
+	if (errors.length === 0) {
+		if (password.length === 0) {
+			changesToProfileNotPassword();
+		} else {
+			passwordUpdate();
+		}
 	} else {
-		passwordUpdate();
+		displayErrors();
 	}
 };
 
@@ -123,6 +134,48 @@ loginAfterPassChange = () => {
 				window.location = '/Public/main.html';
 			}
 		});
+};
+
+nameError = () => {
+	const name = document.getElementById('name').value.trim();
+	if (name.length > 50 || name.length === 0) {
+		errors.push('nameError');
+	}
+	const noError = document.getElementById('nameError');
+	noError.setAttribute('class', 'nameError noError');
+};
+
+passwordError = () => {
+	const pass1 = document.getElementById('pass1').value;
+	const pass1Input = document.getElementById('pass1');
+	const pass2 = document.getElementById('pass2').value;
+	if (pass1 !== pass2) {
+		errors.push('passError');
+	}
+	if (pass1.length === 0) {
+		errors.push('passError');
+	}
+	const noError = document.getElementById('passError');
+	noError.setAttribute('class', 'passError noError');
+};
+
+emailError = () => {
+	let email = new RegExp(
+		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+	);
+	const isEmailValid = email.test(document.getElementById('email').value);
+	if (isEmailValid === false) {
+		errors.push('emailError');
+	}
+	const noError = document.getElementById('emailError');
+	noError.setAttribute('class', 'emailError noError');
+};
+
+displayErrors = () => {
+	errors.map(error => {
+		const displayError = document.getElementById(`${error}`);
+		displayError.setAttribute('class', `${error}`);
+	});
 };
 
 gettingProfileInformation();
