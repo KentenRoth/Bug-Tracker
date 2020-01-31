@@ -10,7 +10,6 @@ logoutAllAccounts = () => {
 	axios
 		.post('http://localhost:3000/users/logoutAll', {}, config)
 		.then(response => {
-			console.log(response);
 			if (response.status === 200) {
 				window.location = '/Public';
 			}
@@ -133,6 +132,21 @@ loginAfterPassChange = () => {
 			if (response.status === 200) {
 				window.location = '/Public/main.html';
 			}
+		});
+};
+
+logoutCurrentDevice = () => {
+	axios
+		.post(
+			'http://localhost:3000/users/logout',
+			{
+				token
+			},
+			config
+		)
+		.then((window.location = '/Public'))
+		.catch(error => {
+			console.log(error);
 		});
 };
 

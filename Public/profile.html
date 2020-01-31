@@ -103,19 +103,26 @@
 							<div class="submitButton">
 								<input class="button" type="submit" />
 							</div>
-							<div>
-								<button class="button logout">Logout</button>
-							</div>
-
-							<div class="home">
-								<a href=""><p>Don't save changes</p></a>
-							</div>
-							<div class="home logoutAll">
-								<a href="" onclick="logoutAllAccounts()"
-									><p>Logout all acounts.</p></a
-								>
-							</div>
 						</form>
+						<div>
+							<button
+								class="button logout"
+								onclick="logoutCurrentDevice()"
+							>
+								Logout
+							</button>
+						</div>
+
+						<div class="home">
+							<a href="/Public/main.html"
+								><p>Don't save changes</p></a
+							>
+						</div>
+						<div class="home logoutAll">
+							<a href="" onclick="logoutAllAccounts()"
+								><p>Logout all acounts.</p></a
+							>
+						</div>
 					</div>
 				</div>
 			</div>
