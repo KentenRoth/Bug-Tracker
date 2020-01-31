@@ -10,7 +10,7 @@ let errors = [];
 
 projectError = () => {
 	const project = document.getElementById('project').value.trim();
-	if (project.length > 50 || project.length === 0) {
+	if (project.length > 20 || project.length === 0) {
 		errors.push('projectError');
 	}
 	const noError = document.getElementById('projectError');
