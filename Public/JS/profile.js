@@ -11,7 +11,7 @@ logoutAllAccounts = () => {
 		.post('http://localhost:3000/users/logoutAll', {}, config)
 		.then(response => {
 			if (response.status === 200) {
-				window.location = '/Public';
+				window.location = '/Public/login';
 			}
 		})
 		.catch(error => {
@@ -130,7 +130,7 @@ loginAfterPassChange = () => {
 		.then(response => {
 			localStorage.setItem('authToken', response.data.authToken);
 			if (response.status === 200) {
-				window.location = '/Public/main.html';
+				window.location = '/Public';
 			}
 		});
 };
@@ -144,7 +144,7 @@ logoutCurrentDevice = () => {
 			},
 			config
 		)
-		.then((window.location = '/Public'))
+		.then((window.location = '/Public/login'))
 		.catch(error => {
 			console.log(error);
 		});

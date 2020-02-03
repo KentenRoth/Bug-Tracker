@@ -27,7 +27,7 @@ function login() {
 		.then(function(response) {
 			localStorage.setItem('authToken', response.data.authToken);
 			if (response.status === 200) {
-				window.location = '/Public/main.html';
+				window.location = '/Public';
 			}
 		})
 		.catch(function(error) {

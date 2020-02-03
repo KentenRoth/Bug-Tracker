@@ -1,71 +1,73 @@
 <!DOCTYPE html>
-
 <html class="no-js">
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<title>Bug Tracker</title>
+		<title></title>
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- <script
+			src="https://kit.fontawesome.com/cc6e01b5fd.js"
+			crossorigin="anonymous"
+			SameSite="None"
+		></script> -->
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+			integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M"
+			crossorigin="anonymous"
+		/>
 		<link rel="stylesheet" href="./CSS/styles.css" />
-		<link rel="stylesheet" href="./CSS/errors.css" />
+		<link rel="stylesheet" href="./CSS/main.css" />
 	</head>
 	<body>
-		<div class="content">
+		<div class="navbar">
 			<div class="container">
-				<div class="box">
-					<div class="boxContent">
-						<form class="form" onsubmit="login(); return false">
-							<div id="errors" class="errorMessage">
-								<p>Login Failed</p>
-							</div>
-
-							<div class="formInput">
-								<p id="emailInput" class="emailInput">
-									Email
-								</p>
-								<input
-									id="email"
-									class="email"
-									type="text"
-									placeholder="Email"
-									value=""
-									onfocus="isActive()"
-									onblur="notActive()"
-								/>
-							</div>
-							<div class="formInput">
-								<p id="passInput" class="passInput">
-									Password
-								</p>
-								<input
-									id="pass"
-									class="pass"
-									type="password"
-									placeholder="Password"
-									onfocus="isActive()"
-									onblur="notActive()"
-								/>
-							</div>
-							<div class="submitButton">
-								<input class="button" type="submit" />
-							</div>
-
-							<div class="row">
-								<div class="col-6 sign">
-									<p><a href="signUp.html">Sign Up!</a></p>
-								</div>
-								<div class="col-6 lost">
-									<p><a href="">Lost Password?</a></p>
-								</div>
-							</div>
-						</form>
+				<div class="row">
+					<div class="col-3">
+						<div class="create">
+							<a href="/Public/create.html"
+								><i class="far fa-plus-square fa-2x"></i
+							></a>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="projectName" id="projectName"></div>
+					</div>
+					<div class="col-3">
+						<div class="user">
+							<a href="/Public/profile.html"
+								><i class="far fa-user fa-2x"></i
+							></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="background">
+			<div class="mainContent">
+				<div class="container">
+					<div id="bugs"></div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="container">
+				<div class="showCompleted">
+					Show Completed
+					<div class="checkboxHouse">
+						<input
+							onclick="toggleHideCompletedInLS()"
+							class="complete"
+							id="hideCompleted"
+							type="checkbox"
+						/>
 					</div>
 				</div>
 			</div>
 		</div>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src="./JS/styles.js" async defer></script>
-		<script src="./JS/login.js" async defer></script>
+		<script src="./JS/main.js" async defer></script>
 	</body>
 </html>

@@ -74,7 +74,7 @@ updateTicket = id => {
 				},
 				config
 			)
-			.then((window.location = '/Public/main.html'))
+			.then((window.location = '/Public'))
 			.catch(error => console.log(error));
 	} else {
 		displayErrors();
@@ -91,7 +91,7 @@ completedTicket = id => {
 				},
 				config
 			)
-			.then((window.location = '/Public/main.html'));
+			.then((window.location = '/Public'));
 	} else {
 		axios
 			.patch(
@@ -101,7 +101,7 @@ completedTicket = id => {
 				},
 				config
 			)
-			.then((window.location = '/Public/main.html'));
+			.then((window.location = '/Public'));
 	}
 };
 
@@ -110,7 +110,7 @@ removeTicket = id => {
 		.delete(`http://localhost:3000/tickets/${id}`, config)
 		.then(response => {
 			localStorage.removeItem('ticket');
-			window.location = '/Public/main.html';
+			window.location = '/Public';
 		})
 		.catch(error => {
 			console.log(error);
