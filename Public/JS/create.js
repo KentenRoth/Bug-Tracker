@@ -84,7 +84,7 @@ saveTicket = () => {
 				}
 			})
 			.catch(error => {
-				console.log(error);
+				window.location = '/Public/login.html';
 			});
 	} else {
 		displayErrors();

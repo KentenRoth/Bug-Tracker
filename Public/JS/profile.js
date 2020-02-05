@@ -11,7 +11,7 @@ logoutAllAccounts = () => {
 		.post('http://localhost:3000/users/logoutAll', {}, config)
 		.then(response => {
 			if (response.status === 200) {
-				window.location = '/Public/login';
+				window.location = '/Public/login.html';
 			}
 		})
 		.catch(error => {
@@ -32,7 +32,7 @@ gettingProfileInformation = () => {
 			emailInput.setAttribute('value', response.data.email);
 			userEmail = response.data.email;
 		})
-		.catch(error => console.log(error));
+		.catch((window.location = '/Public/login.html'));
 };
 
 saveEditsToProfile = () => {
@@ -144,7 +144,7 @@ logoutCurrentDevice = () => {
 			},
 			config
 		)
-		.then((window.location = '/Public/login'))
+		.then((window.location = '/Public/login.html'))
 		.catch(error => {
 			console.log(error);
 		});

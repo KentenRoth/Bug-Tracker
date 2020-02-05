@@ -228,23 +228,32 @@ getTickets = () => {
 	} else {
 		url = 'http://localhost:3000/tickets';
 	}
-	axios.get(`${url}`, config).then(response => {
-		const tickets = response.data;
-		projectSelect(tickets);
-		sortByPriority(tickets);
-		hideCompleted();
-		sortByProjectName(tickets).map(ticket => {
-			if (ticket.priority === 'high') {
-				highPriority(ticket.summary, ticket._id, ticket.completed);
-			}
-			if (ticket.priority === 'medium') {
-				mediumPriority(ticket.summary, ticket._id, ticket.completed);
-			}
-			if (ticket.priority === 'low') {
-				lowPriority(ticket.summary, ticket._id, ticket.completed);
-			}
+	axios
+		.get(`${url}`, config)
+		.then(response => {
+			const tickets = response.data;
+			projectSelect(tickets);
+			sortByPriority(tickets);
+			hideCompleted();
+			sortByProjectName(tickets).map(ticket => {
+				if (ticket.priority === 'high') {
+					highPriority(ticket.summary, ticket._id, ticket.completed);
+				}
+				if (ticket.priority === 'medium') {
+					mediumPriority(
+						ticket.summary,
+						ticket._id,
+						ticket.completed
+					);
+				}
+				if (ticket.priority === 'low') {
+					lowPriority(ticket.summary, ticket._id, ticket.completed);
+				}
+			});
+		})
+		.catch(error => {
+			window.location = '/Public/login.html';
 		});
-	});
 };
 
 projectSelect = tickets => {

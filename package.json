@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "node Server/index.js"
+		"start": "node Server/index.js",
+		"dev": "./node_modules/.bin/env-cmd -f ./Server/config/dev.env node Server/index.js"
 	},
 	"repository": {
 		"type": "git",
@@ -19,5 +20,8 @@
 	"dependencies": {
 		"axios": "^0.19.0",
 		"dotenv": "^8.2.0"
+	},
+	"devDependencies": {
+		"env-cmd": "^10.0.1"
 	}
 }
