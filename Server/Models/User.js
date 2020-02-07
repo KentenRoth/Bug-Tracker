@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Ticket = require('./Ticket');
 const Schema = mongoose.Schema;
-require('dotenv').config();
 
 const UserSchema = new Schema({
 	name: {
