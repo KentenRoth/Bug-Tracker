@@ -52,7 +52,7 @@ createAccount = () => {
 
 	if (errors.length === 0) {
 		axios
-			.post('http://localhost:3000/users', {
+			.post('https://kents-bug-tracker-api.herokuapp.com/users', {
 				name,
 				email,
 				password: pass

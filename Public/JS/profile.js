@@ -8,7 +8,11 @@ const config = {
 
 logoutAllAccounts = () => {
 	axios
-		.post('http://localhost:3000/users/logoutAll', {}, config)
+		.post(
+			'https://kents-bug-tracker-api.herokuapp.com/users/logoutAll',
+			{},
+			config
+		)
 		.then(response => {
 			if (response.status === 200) {
 				window.location = '/Public/login.html';
@@ -26,26 +30,28 @@ gettingProfileInformation = () => {
 	const nameInput = document.getElementById('name');
 	const emailInput = document.getElementById('email');
 	axios
-		.get('http://localhost:3000/users/me', config)
+		.get('https://kents-bug-tracker-api.herokuapp.com/users/me', config)
 		.then(response => {
 			nameInput.setAttribute('value', response.data.name);
 			emailInput.setAttribute('value', response.data.email);
 			userEmail = response.data.email;
 		})
-		.catch((window.location = '/Public/login.html'));
+		.catch(error => {
+			window.location = '/Public/login.html';
+		});
 };
 
 saveEditsToProfile = () => {
 	errors = [];
 	const password = document.getElementById('pass1').value;
 	nameError();
-	passwordError();
 	emailError();
-	console.log(errors);
 	if (errors.length === 0) {
 		if (password.length === 0) {
+			console.log('running');
 			changesToProfileNotPassword();
 		} else {
+			passwordError();
 			passwordUpdate();
 		}
 	} else {
@@ -56,25 +62,26 @@ saveEditsToProfile = () => {
 changesToProfileNotPassword = () => {
 	const name = document.getElementById('name').value;
 	const email = document.getElementById('email').value;
+	const currentPass = document.getElementById('currentPass').value;
 	axios
-		.post('http://localhost:3000/users/login', {
+		.post('https://kents-bug-tracker-api.herokuapp.com/users/login', {
 			email: userEmail,
 			password: currentPass
 		})
 		.then(response => {
+			console.log(response);
 			if (response.status === 200) {
-				console.log('running');
 				axios.patch(
-					'http://localhost:3000/users/me',
+					'https://kents-bug-tracker-api.herokuapp.com/users/me',
 					{
 						name,
-						email,
-						password
+						email
 					},
 					config
 				);
 			}
 		})
+		.then((window.location = '/Public/'))
 		.catch(error => {
 			console.log(error);
 		});
@@ -90,14 +97,14 @@ passwordUpdate = () => {
 	}
 
 	axios
-		.post('http://localhost:3000/users/login', {
+		.post('https://kents-bug-tracker-api.herokuapp.com/users/login', {
 			email: userEmail,
 			password: currentPass
 		})
 		.then(response => {
 			if (response.status === 200) {
 				axios.patch(
-					'http://localhost:3000/users/me',
+					'https://kents-bug-tracker-api.herokuapp.com/users/me',
 					{
 						name,
 						email,
@@ -123,7 +130,7 @@ loginAfterPassChange = () => {
 	console.log(password);
 
 	axios
-		.post('http://localhost:3000/users/login', {
+		.post('https://kents-bug-tracker-api.herokuapp.com/users/login', {
 			email,
 			password
 		})
@@ -138,13 +145,17 @@ loginAfterPassChange = () => {
 logoutCurrentDevice = () => {
 	axios
 		.post(
-			'http://localhost:3000/users/logout',
+			'https://kents-bug-tracker-api.herokuapp.com/users/logout',
 			{
 				token
 			},
 			config
 		)
-		.then((window.location = '/Public/login.html'))
+		.then(response => {
+			if (response.status === 200) {
+				window.location = '/Public/login.html';
+			}
+		})
 		.catch(error => {
 			console.log(error);
 		});

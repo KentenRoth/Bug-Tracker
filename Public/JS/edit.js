@@ -65,7 +65,7 @@ updateTicket = id => {
 	if (errors.length === 0) {
 		axios
 			.patch(
-				`http://localhost:3000/tickets/${id}`,
+				`https://kents-bug-tracker-api.herokuapp.com/tickets/${id}`,
 				{
 					project,
 					summary,
@@ -85,7 +85,7 @@ completedTicket = id => {
 	if (ticket.completed === false) {
 		axios
 			.patch(
-				`http://localhost:3000/tickets/${id}`,
+				`https://kents-bug-tracker-api.herokuapp.com/tickets/${id}`,
 				{
 					completed: true
 				},
@@ -95,7 +95,7 @@ completedTicket = id => {
 	} else {
 		axios
 			.patch(
-				`http://localhost:3000/tickets/${id}`,
+				`https://kents-bug-tracker-api.herokuapp.com/tickets/${id}`,
 				{
 					completed: false
 				},
@@ -107,7 +107,10 @@ completedTicket = id => {
 
 removeTicket = id => {
 	axios
-		.delete(`http://localhost:3000/tickets/${id}`, config)
+		.delete(
+			`https://kents-bug-tracker-api.herokuapp.com/tickets/${id}`,
+			config
+		)
 		.then(response => {
 			localStorage.removeItem('ticket');
 			window.location = '/Public';

@@ -179,7 +179,7 @@ updateTaskDisplay = (id, priority, completed) => {
 completedTicket = id => {
 	axios
 		.patch(
-			`http://localhost:3000/tickets/${id}`,
+			`https://kents-bug-tracker-api.herokuapp.com/tickets/${id}`,
 			{
 				completed: true
 			},
@@ -201,7 +201,7 @@ completedTicket = id => {
 unCompletedTicket = id => {
 	axios
 		.patch(
-			`http://localhost:3000/tickets/${id}`,
+			`https://kents-bug-tracker-api.herokuapp.com/tickets/${id}`,
 			{
 				completed: false
 			},
@@ -224,14 +224,18 @@ getTickets = () => {
 	let url = '';
 	let showCompleted = localStorage.getItem('hideCompleted');
 	if (showCompleted === 'false') {
-		url = 'http://localhost:3000/tickets?completed=false';
+		url =
+			'https://kents-bug-tracker-api.herokuapp.com/tickets?completed=false';
 	} else {
-		url = 'http://localhost:3000/tickets';
+		url = 'https://kents-bug-tracker-api.herokuapp.com/tickets';
 	}
 	axios
 		.get(`${url}`, config)
 		.then(response => {
 			const tickets = response.data;
+			if (tickets.length === 0) {
+				retrun;
+			}
 			projectSelect(tickets);
 			sortByPriority(tickets);
 			hideCompleted();
@@ -310,7 +314,7 @@ setProjectName = () => {
 sortByProjectName = tickets => {
 	let currentProject = [];
 	const e = document.getElementById('projectSelect');
-	const projectName = e.options[e.selectedIndex].value;
+	let projectName = e.options[e.selectedIndex].value;
 
 	tickets.map(ticket => {
 		if (ticket.project.toLowerCase() === projectName) {
@@ -333,7 +337,10 @@ sortByPriority = tickets => {
 
 selectedTicket = ticketID => {
 	axios
-		.get(`http://localhost:3000/tickets/${ticketID}`, config)
+		.get(
+			`https://kents-bug-tracker-api.herokuapp.com/tickets/${ticketID}`,
+			config
+		)
 		.then(response => {
 			localStorage.setItem('ticket', JSON.stringify(response.data));
 			window.location = '/Public/edit.html';

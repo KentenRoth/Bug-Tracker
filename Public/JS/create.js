@@ -68,7 +68,7 @@ saveTicket = () => {
 	if (errors.length === 0) {
 		axios
 			.post(
-				'http://localhost:3000/tickets',
+				'https://kents-bug-tracker-api.herokuapp.com/tickets',
 				{
 					project,
 					summary,
@@ -84,7 +84,7 @@ saveTicket = () => {
 				}
 			})
 			.catch(error => {
-				window.location = '/Public/login.html';
+				console.log(error);
 			});
 	} else {
 		displayErrors();

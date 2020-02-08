@@ -20,7 +20,7 @@ function login() {
 	const pass = document.getElementById('pass').value;
 
 	axios
-		.post('http://localhost:3000/users/login', {
+		.post('https://kents-bug-tracker-api.herokuapp.com/users/login', {
 			email,
 			password: pass
 		})
