@@ -256,7 +256,7 @@ getTickets = () => {
 			});
 		})
 		.catch(error => {
-			window.location = '/login.html';
+			window.location = '/Bug-Tracker/login.html';
 		});
 };
 
@@ -343,7 +343,7 @@ selectedTicket = ticketID => {
 		)
 		.then(response => {
 			localStorage.setItem('ticket', JSON.stringify(response.data));
-			window.location = '/edit.html';
+			window.location = '/Bug-Tracker/edit.html';
 		})
 		.catch(error => {
 			console.log(error);

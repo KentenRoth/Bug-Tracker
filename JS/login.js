@@ -27,7 +27,7 @@ function login() {
 		.then(function(response) {
 			localStorage.setItem('authToken', response.data.authToken);
 			if (response.status === 200) {
-				window.location = '/';
+				window.location = '/Bug-Tracker/';
 			}
 		})
 		.catch(function(error) {

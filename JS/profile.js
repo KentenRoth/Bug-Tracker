@@ -15,7 +15,7 @@ logoutAllAccounts = () => {
 		)
 		.then(response => {
 			if (response.status === 200) {
-				window.location = '/login.html';
+				window.location = '/Bug-Tracker/login.html';
 			}
 		})
 		.catch(error => {
@@ -37,7 +37,7 @@ gettingProfileInformation = () => {
 			userEmail = response.data.email;
 		})
 		.catch(error => {
-			window.location = '/login.html';
+			window.location = '/Bug-Tracker/login.html';
 		});
 };
 
@@ -81,7 +81,7 @@ changesToProfileNotPassword = () => {
 				);
 			}
 		})
-		.then((window.location = '/'))
+		.then((window.location = '/Bug-Tracker/'))
 		.catch(error => {
 			console.log(error);
 		});
@@ -137,7 +137,7 @@ loginAfterPassChange = () => {
 		.then(response => {
 			localStorage.setItem('authToken', response.data.authToken);
 			if (response.status === 200) {
-				window.location = '/';
+				window.location = '/Bug-Tracker/';
 			}
 		});
 };
@@ -153,7 +153,7 @@ logoutCurrentDevice = () => {
 		)
 		.then(response => {
 			if (response.status === 200) {
-				window.location = '/login.html';
+				window.location = '/Bug-Tracker/login.html';
 			}
 		})
 		.catch(error => {

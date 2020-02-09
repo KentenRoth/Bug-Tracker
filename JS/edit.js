@@ -74,7 +74,7 @@ updateTicket = id => {
 				},
 				config
 			)
-			.then((window.location = '/Public'))
+			.then((window.location = '/Bug-Tracker/'))
 			.catch(error => console.log(error));
 	} else {
 		displayErrors();
@@ -91,7 +91,7 @@ completedTicket = id => {
 				},
 				config
 			)
-			.then((window.location = '/'));
+			.then((window.location = '/Bug-Tracker/'));
 	} else {
 		axios
 			.patch(
