@@ -256,7 +256,7 @@ getTickets = () => {
 			});
 		})
 		.catch(error => {
-			console.log(error);
+			window.location = '/Public/login';
 		});
 };
 
