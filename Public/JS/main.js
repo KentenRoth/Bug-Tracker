@@ -234,7 +234,7 @@ getTickets = () => {
 		.then(response => {
 			const tickets = response.data;
 			if (tickets.length === 0) {
-				retrun;
+				return console.log('no Tickets');
 			}
 			projectSelect(tickets);
 			sortByPriority(tickets);
@@ -256,7 +256,7 @@ getTickets = () => {
 			});
 		})
 		.catch(error => {
-			window.location = '/Public/login.html';
+			console.log(error);
 		});
 };
 
