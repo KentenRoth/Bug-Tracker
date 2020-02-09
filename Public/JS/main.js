@@ -256,7 +256,7 @@ getTickets = () => {
 			});
 		})
 		.catch(error => {
-			window.location = '/Public/login';
+			window.location = '/Bug-Tracker/Public/login.html';
 		});
 };
 
