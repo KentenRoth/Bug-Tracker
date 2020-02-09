@@ -15,7 +15,7 @@ logoutAllAccounts = () => {
 		)
 		.then(response => {
 			if (response.status === 200) {
-				window.location = '/Public/login.html';
+				window.location = '/login.html';
 			}
 		})
 		.catch(error => {
@@ -37,7 +37,7 @@ gettingProfileInformation = () => {
 			userEmail = response.data.email;
 		})
 		.catch(error => {
-			window.location = '/Public/login.html';
+			window.location = '/login.html';
 		});
 };
 
@@ -81,7 +81,7 @@ changesToProfileNotPassword = () => {
 				);
 			}
 		})
-		.then((window.location = '/Public/'))
+		.then((window.location = '/'))
 		.catch(error => {
 			console.log(error);
 		});
@@ -137,7 +137,7 @@ loginAfterPassChange = () => {
 		.then(response => {
 			localStorage.setItem('authToken', response.data.authToken);
 			if (response.status === 200) {
-				window.location = '/Public';
+				window.location = '/';
 			}
 		});
 };
@@ -153,7 +153,7 @@ logoutCurrentDevice = () => {
 		)
 		.then(response => {
 			if (response.status === 200) {
-				window.location = '/Public/login.html';
+				window.location = '/login.html';
 			}
 		})
 		.catch(error => {

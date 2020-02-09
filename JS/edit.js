@@ -91,7 +91,7 @@ completedTicket = id => {
 				},
 				config
 			)
-			.then((window.location = '/Public'));
+			.then((window.location = '/'));
 	} else {
 		axios
 			.patch(
@@ -101,7 +101,7 @@ completedTicket = id => {
 				},
 				config
 			)
-			.then((window.location = '/Public'));
+			.then((window.location = '/'));
 	}
 };
 
@@ -113,7 +113,7 @@ removeTicket = id => {
 		)
 		.then(response => {
 			localStorage.removeItem('ticket');
-			window.location = '/Public';
+			window.location = '/';
 		})
 		.catch(error => {
 			console.log(error);

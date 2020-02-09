@@ -15,21 +15,13 @@
 				<div class="box">
 					<div class="boxContent">
 						<div class="title">
-							<h3>Edit</h3>
-						</div>
-						<form id="form">
+							<h3>Create</h3>
 							<div class="errorBox">
-								<p
-									id="noTicketError"
-									class="noTicketError noError"
-								>
-									Ticket Not Found
-								</p>
 								<p
 									id="projectError"
 									class="projectError noError"
 								>
-									Project: 1-50 characters
+									Project: 1-20 characters
 								</p>
 								<p
 									id="summaryError"
@@ -50,6 +42,9 @@
 									Description: 1-500 characters is the limit
 								</p>
 							</div>
+						</div>
+						<div class="errors"></div>
+						<form onsubmit="saveTicket(); return false">
 							<div class="formInput">
 								<p id="projectInput" class="projectInput">
 									Project Name
@@ -105,27 +100,12 @@
 								></textarea>
 							</div>
 							<div class="submitButton">
-								<input
-									class="button"
-									type="submit"
-									value="Save"
-								/>
+								<input class="button" type="submit" />
 							</div>
 						</form>
-						<div class="completedButton">
-							<button
-								id="complete"
-								class="button complete"
-							></button>
-						</div>
-						<div>
-							<button id="remove" class="button remove">
-								Delete
-							</button>
-						</div>
 
 						<div class="home">
-							<a href="/Public"><p>Don't Save</p></a>
+							<a href="/"><p>Don't Create</p></a>
 						</div>
 					</div>
 				</div>
@@ -133,6 +113,6 @@
 		</div>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src="./JS/styles.js" async defer></script>
-		<script src="./JS/edit.js" async defer></script>
+		<script src="./JS/create.js" async defer></script>
 	</body>
 </html>

@@ -60,7 +60,7 @@ createAccount = () => {
 			.then(response => {
 				localStorage.setItem('authToken', response.data.authToken);
 				if (response.status === 201) {
-					window.location = '/Public';
+					window.location = '/';
 				}
 			})
 			.catch(error => {

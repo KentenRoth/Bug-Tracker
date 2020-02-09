@@ -80,7 +80,7 @@ saveTicket = () => {
 			)
 			.then(response => {
 				if (response.status === 200) {
-					window.location = '/Public';
+					window.location = '/';
 				}
 			})
 			.catch(error => {
