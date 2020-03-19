@@ -10,5 +10,6 @@ There are things I want to add to this project yet.
 2) Add more ways to sort, and do the sorting server side.
 3) Possibly convert the front-end to React.
 4) Also, just looking at ways to make the code better, and more efficient.
+5) Move the Server back into this project, instead of having it running from another project.
 
 Getting this project wrapped up feels great, but like always, I have plans for what I want to do next.
